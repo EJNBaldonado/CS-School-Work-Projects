@@ -1,0 +1,197 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\ECON108\Lab2\s22_lab2_32.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Apr 2022, 11:37:21
+{txt}
+{com}. 
+. *Create Age^2 term
+. gen Age2 = Age^2
+{txt}
+{com}. 
+. *Displaying two scatter plots
+. *twoway (scatter Amount Age)(lfit Amount Age)
+. *twoway (scatter Amount Age2)(lfit Amount Age2)
+. 
+. *Regressions with Age, and Age^2 with controls
+. reg Amount Age MPHover Female Black Hispanic, robust
+
+{txt}Linear regression                               Number of obs     = {res}    31,674
+                                                {txt}F(5, 31668)       =  {res}  2160.63
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.5036
+                                                {txt}Root MSE          =    {res}  39.63
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}      Amount{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Age {c |}{col 14}{res}{space 2} .0268202{col 26}{space 2} .0167876{col 37}{space 1}    1.60{col 46}{space 3}0.110{col 54}{space 4}-.0060843{col 67}{space 3} .0597246
+{txt}{space 5}MPHover {c |}{col 14}{res}{space 2} 6.878499{col 26}{space 2} .0666126{col 37}{space 1}  103.26{col 46}{space 3}0.000{col 54}{space 4} 6.747936{col 67}{space 3} 7.009063
+{txt}{space 6}Female {c |}{col 14}{res}{space 2}-3.543267{col 26}{space 2} .4695577{col 37}{space 1}   -7.55{col 46}{space 3}0.000{col 54}{space 4}-4.463618{col 67}{space 3}-2.622915
+{txt}{space 7}Black {c |}{col 14}{res}{space 2}-2.029298{col 26}{space 2} 1.143602{col 37}{space 1}   -1.77{col 46}{space 3}0.076{col 54}{space 4}-4.270803{col 67}{space 3} .2122063
+{txt}{space 4}Hispanic {c |}{col 14}{res}{space 2} 1.932011{col 26}{space 2} 1.103415{col 37}{space 1}    1.75{col 46}{space 3}0.080{col 54}{space 4}-.2307254{col 67}{space 3} 4.094747
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 4.845118{col 26}{space 2} 1.199358{col 37}{space 1}    4.04{col 46}{space 3}0.000{col 54}{space 4}  2.49433{col 67}{space 3} 7.195907
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using s22_lab2_32, word replace
+{txt}{stata `"shellout using `"s22_lab2_32.rtf"'"':s22_lab2_32.rtf}
+{browse `"C:\ECON108\Lab2"' :dir}{com} : {txt}{stata `"seeout using "s22_lab2_32.txt""':seeout}
+
+{com}. 
+. reg Amount Age Age2 MPHover Female Black Hispanic, robust
+
+{txt}Linear regression                               Number of obs     = {res}    31,674
+                                                {txt}F(6, 31667)       =  {res}  1805.23
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.5038
+                                                {txt}Root MSE          =    {res} 39.624
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}      Amount{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Age {c |}{col 14}{res}{space 2} -.264765{col 26}{space 2} .0845281{col 37}{space 1}   -3.13{col 46}{space 3}0.002{col 54}{space 4}-.4304433{col 67}{space 3}-.0990866
+{txt}{space 8}Age2 {c |}{col 14}{res}{space 2} .0037427{col 26}{space 2}  .001028{col 37}{space 1}    3.64{col 46}{space 3}0.000{col 54}{space 4} .0017278{col 67}{space 3} .0057577
+{txt}{space 5}MPHover {c |}{col 14}{res}{space 2} 6.873465{col 26}{space 2} .0666268{col 37}{space 1}  103.16{col 46}{space 3}0.000{col 54}{space 4} 6.742874{col 67}{space 3} 7.004056
+{txt}{space 6}Female {c |}{col 14}{res}{space 2}-3.510321{col 26}{space 2} .4696799{col 37}{space 1}   -7.47{col 46}{space 3}0.000{col 54}{space 4}-4.430912{col 67}{space 3} -2.58973
+{txt}{space 7}Black {c |}{col 14}{res}{space 2}-1.919675{col 26}{space 2} 1.143056{col 37}{space 1}   -1.68{col 46}{space 3}0.093{col 54}{space 4}-4.160108{col 67}{space 3} .3207587
+{txt}{space 4}Hispanic {c |}{col 14}{res}{space 2} 2.068462{col 26}{space 2} 1.102879{col 37}{space 1}    1.88{col 46}{space 3}0.061{col 54}{space 4} -.093223{col 67}{space 3} 4.230147
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 9.867176{col 26}{space 2} 1.904825{col 37}{space 1}    5.18{col 46}{space 3}0.000{col 54}{space 4} 6.133644{col 67}{space 3} 13.60071
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using s22_lab2_32, word
+{txt}{stata `"shellout using `"s22_lab2_32.rtf"'"':s22_lab2_32.rtf}
+{browse `"C:\ECON108\Lab2"' :dir}{com} : {txt}{stata `"seeout using "s22_lab2_32.txt""':seeout}
+
+{com}. 
+. local forAge = "(Not controlling for age^2) Given the person's age is: "
+{txt}
+{com}. local forAge2 = "(Controlling for age) Given the person's age is: "
+{txt}
+{com}. local output = "The expected value for the fine is: "
+{txt}
+{com}. 
+. *Calculate expected fine for both regressions for individuals aged 20,30,40,50
+. *Given a white male is going 0 MPH over the speed limit
+. foreach x in 20 30 40 50 60{c -(}
+{txt}  2{com}.     display "`forAge'"
+{txt}  3{com}.         display `x'
+{txt}  4{com}.         display "`output'"
+{txt}  5{com}.         display 4.845118 + `x' * .0268202
+{txt}  6{com}.         display "`forAge2'" 
+{txt}  7{com}.         display `x'
+{txt}  8{com}.         display "`output'"
+{txt}  9{com}.         display 9.867176 + `x' * -0.264765
+{txt} 10{com}. {c )-}
+(Not controlling for age^2) Given the person's age is: 
+20
+The expected value for the fine is: 
+5.381522
+(Controlling for age) Given the person's age is: 
+20
+The expected value for the fine is: 
+4.571876
+(Not controlling for age^2) Given the person's age is: 
+30
+The expected value for the fine is: 
+5.649724
+(Controlling for age) Given the person's age is: 
+30
+The expected value for the fine is: 
+1.924226
+(Not controlling for age^2) Given the person's age is: 
+40
+The expected value for the fine is: 
+5.917926
+(Controlling for age) Given the person's age is: 
+40
+The expected value for the fine is: 
+-.723424
+(Not controlling for age^2) Given the person's age is: 
+50
+The expected value for the fine is: 
+6.186128
+(Controlling for age) Given the person's age is: 
+50
+The expected value for the fine is: 
+-3.371074
+(Not controlling for age^2) Given the person's age is: 
+60
+The expected value for the fine is: 
+6.45433
+(Controlling for age) Given the person's age is: 
+60
+The expected value for the fine is: 
+-6.018724
+{txt}
+{com}. 
+. *Regress for out of towners / out of staters, see if there are differences in treatment
+. gen Town_State = OutTown * OutState
+{txt}
+{com}. *Since it's impossible to be out of state and not be out of town, we can relay this interaction purely on OutTown and the interaction term
+. *Without controls
+. reg Amount Age Age2 OutTown Town_State, robust
+
+{txt}Linear regression                               Number of obs     = {res}    31,674
+                                                {txt}F(4, 31669)       =  {res}    73.25
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0092
+                                                {txt}Root MSE          =    {res} 55.989
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}      Amount{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Age {c |}{col 14}{res}{space 2}-1.236119{col 26}{space 2} .1220236{col 37}{space 1}  -10.13{col 46}{space 3}0.000{col 54}{space 4} -1.47529{col 67}{space 3}-.9969477
+{txt}{space 8}Age2 {c |}{col 14}{res}{space 2} .0119503{col 26}{space 2} .0014897{col 37}{space 1}    8.02{col 46}{space 3}0.000{col 54}{space 4} .0090304{col 67}{space 3} .0148702
+{txt}{space 5}OutTown {c |}{col 14}{res}{space 2} 4.735281{col 26}{space 2} .9124642{col 37}{space 1}    5.19{col 46}{space 3}0.000{col 54}{space 4} 2.946816{col 67}{space 3} 6.523747
+{txt}{space 2}Town_State {c |}{col 14}{res}{space 2}  5.78391{col 26}{space 2} .7662843{col 37}{space 1}    7.55{col 46}{space 3}0.000{col 54}{space 4} 4.281963{col 67}{space 3} 7.285857
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 142.7765{col 26}{space 2} 2.365607{col 37}{space 1}   60.36{col 46}{space 3}0.000{col 54}{space 4} 138.1398{col 67}{space 3} 147.4132
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using s22_lab2_32, word
+{txt}{stata `"shellout using `"s22_lab2_32.rtf"'"':s22_lab2_32.rtf}
+{browse `"C:\ECON108\Lab2"' :dir}{com} : {txt}{stata `"seeout using "s22_lab2_32.txt""':seeout}
+
+{com}. 
+. *With controls
+. reg Amount Age Age2 MPHover Female Black Hispanic OutTown Town_State, robust
+
+{txt}Linear regression                               Number of obs     = {res}    31,674
+                                                {txt}F(8, 31665)       =  {res}  1476.03
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.5099
+                                                {txt}Root MSE          =    {res} 39.382
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}      Amount{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}Age {c |}{col 14}{res}{space 2}-.3350407{col 26}{space 2} .0845792{col 37}{space 1}   -3.96{col 46}{space 3}0.000{col 54}{space 4}-.5008192{col 67}{space 3}-.1692621
+{txt}{space 8}Age2 {c |}{col 14}{res}{space 2} .0043972{col 26}{space 2} .0010291{col 37}{space 1}    4.27{col 46}{space 3}0.000{col 54}{space 4} .0023801{col 67}{space 3} .0064142
+{txt}{space 5}MPHover {c |}{col 14}{res}{space 2} 6.897619{col 26}{space 2}  .066276{col 37}{space 1}  104.07{col 46}{space 3}0.000{col 54}{space 4} 6.767716{col 67}{space 3} 7.027523
+{txt}{space 6}Female {c |}{col 14}{res}{space 2}-3.150063{col 26}{space 2} .4675343{col 37}{space 1}   -6.74{col 46}{space 3}0.000{col 54}{space 4}-4.066448{col 67}{space 3}-2.233677
+{txt}{space 7}Black {c |}{col 14}{res}{space 2}-1.658602{col 26}{space 2} 1.135833{col 37}{space 1}   -1.46{col 46}{space 3}0.144{col 54}{space 4}-3.884879{col 67}{space 3} .5676756
+{txt}{space 4}Hispanic {c |}{col 14}{res}{space 2} 3.023382{col 26}{space 2} 1.095726{col 37}{space 1}    2.76{col 46}{space 3}0.006{col 54}{space 4} .8757154{col 67}{space 3} 5.171048
+{txt}{space 5}OutTown {c |}{col 14}{res}{space 2} 4.378796{col 26}{space 2} .6799713{col 37}{space 1}    6.44{col 46}{space 3}0.000{col 54}{space 4} 3.046025{col 67}{space 3} 5.711566
+{txt}{space 2}Town_State {c |}{col 14}{res}{space 2} 9.096868{col 26}{space 2} .4929992{col 37}{space 1}   18.45{col 46}{space 3}0.000{col 54}{space 4}  8.13057{col 67}{space 3} 10.06317
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.064707{col 26}{space 2} 1.933278{col 37}{space 1}    2.62{col 46}{space 3}0.009{col 54}{space 4} 1.275407{col 67}{space 3} 8.854006
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using s22_lab2_32, word
+{txt}{stata `"shellout using `"s22_lab2_32.rtf"'"':s22_lab2_32.rtf}
+{browse `"C:\ECON108\Lab2"' :dir}{com} : {txt}{stata `"seeout using "s22_lab2_32.txt""':seeout}
+
+{com}. 
+. 
+. 
+. log close 
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\ECON108\Lab2\s22_lab2_32.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}22 Apr 2022, 11:37:22
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

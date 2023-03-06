@@ -1,0 +1,31 @@
+	(1)	(2)	(3)	(4)	(5)	(6)	(7)	(8)
+VARIABLES	female	white	black	hispanic	freelunch	wjtest01	wjtest01	wjtest01
+								
+cutoff	-0.0294	-0.0314	0.0389	0.00473	0.0478	3.492***	3.479***	3.618***
+	(0.0337)	(0.0317)	(0.0324)	(0.0277)	(0.0320)	(0.351)	(0.361)	(0.342)
+age	2.09e-05	6.36e-05	-6.01e-05	-7.05e-06	-7.22e-05	0.00697***	0.00666***	0.00694***
+	(8.03e-05)	(7.54e-05)	(7.66e-05)	(6.65e-05)	(7.70e-05)	(0.000786)	(0.000852)	(0.000822)
+cutoff_age							0.000682	-0.000251
+							(0.00163)	(0.00156)
+female								0.806***
+								(0.161)
+white								0.369
+								(0.274)
+black								0.187
+								(0.265)
+hispanic								-1.685***
+								(0.276)
+freelunch								-2.093***
+								(0.181)
+Constant	0.496***	0.343***	0.334***	0.209***	0.623***	5.692***	5.637***	6.717***
+	(0.0183)	(0.0173)	(0.0175)	(0.0150)	(0.0175)	(0.178)	(0.196)	(0.322)
+								
+Observations	3,511	3,481	3,481	3,481	3,492	2,785	2,785	2,756
+R-squared	0.000	0.000	0.000	0.000	0.001	0.323	0.323	0.397
+Robust standard errors in parentheses								
+*** p<0.01, ** p<0.05, * p<0.1								
+A. There should be a jump between these two years as they differ whether the children are either just beginning the program or are alumni. This would make a difference if they were born in the earlier months they become eligible to participate in the prior year instead of waiting. There shouldn't be jumps in other points.
+B. For pretreatment averages and characteristics we find that they are very similar, so there aren't any other discontinuities for variables tested.
+C. The test group is higher by 3.49, which shows that the treatment group is higher than the control group.
+D. The slope is trying to measure age and test score, the relationship between age and test score are the same between groups, so it isn't statistically significant (it's close to 0).
+E. Adding the controls to this result still produces a difference in test results between the groups on each side of the cutoff. This is because it can be seen that there are no discontinuities in the variables when tested prior, so when adding them into the control, it can be clearly seen that the largest difference is in the whether a child was born prior or post cutoff. 

@@ -1,0 +1,133 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\ECON108\Lab1\labassignment1-2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}15 Apr 2022, 10:57:08
+{txt}
+{com}. 
+. reg voteA expendA, robust
+
+{txt}Linear regression                               Number of obs     = {res}       173
+                                                {txt}F(1, 171)         =  {res}    24.14
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.1561
+                                                {txt}Root MSE          =    {res} 15.464
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       voteA{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}expendA {c |}{col 14}{res}{space 2} .0236042{col 26}{space 2}  .004804{col 37}{space 1}    4.91{col 46}{space 3}0.000{col 54}{space 4} .0141214{col 67}{space 3}  .033087
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 43.17116{col 26}{space 2} 1.934246{col 37}{space 1}   22.32{col 46}{space 3}0.000{col 54}{space 4} 39.35309{col 67}{space 3} 46.98924
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using labassignment1-2, excel replace
+{txt}{browse `"labassignment1-2.xml"'}
+{browse `"C:\ECON108\Lab1"' :dir}{com} : {txt}{stata `"seeout using "labassignment1-2.txt""':seeout}
+
+{com}. 
+. reg voteA expendA shareA, robust
+
+{txt}Linear regression                               Number of obs     = {res}       173
+                                                {txt}F(2, 170)         =  {res}   593.97
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.8574
+                                                {txt}Root MSE          =    {res} 6.3745
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       voteA{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}expendA {c |}{col 14}{res}{space 2}-.0024274{col 26}{space 2} .0017033{col 37}{space 1}   -1.43{col 46}{space 3}0.156{col 54}{space 4}-.0057898{col 67}{space 3}  .000935
+{txt}{space 6}shareA {c |}{col 14}{res}{space 2} .4732269{col 26}{space 2} .0146258{col 37}{space 1}   32.36{col 46}{space 3}0.000{col 54}{space 4} .4443554{col 67}{space 3} .5020985
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 27.08624{col 26}{space 2} .9316099{col 37}{space 1}   29.07{col 46}{space 3}0.000{col 54}{space 4} 25.24723{col 67}{space 3} 28.92526
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using labassignment1-2, excel 
+{txt}{browse `"labassignment1-2.xml"'}
+{browse `"C:\ECON108\Lab1"' :dir}{com} : {txt}{stata `"seeout using "labassignment1-2.txt""':seeout}
+
+{com}. 
+. reg voteA expendA shareA prtystrA, robust
+
+{txt}Linear regression                               Number of obs     = {res}       173
+                                                {txt}F(3, 169)         =  {res}   433.17
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.8661
+                                                {txt}Root MSE          =    {res} 6.1973
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       voteA{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}expendA {c |}{col 14}{res}{space 2}-.0032334{col 26}{space 2} .0017294{col 37}{space 1}   -1.87{col 46}{space 3}0.063{col 54}{space 4}-.0066474{col 67}{space 3} .0001805
+{txt}{space 6}shareA {c |}{col 14}{res}{space 2} .4625062{col 26}{space 2} .0137874{col 37}{space 1}   33.55{col 46}{space 3}0.000{col 54}{space 4} .4352886{col 67}{space 3} .4897239
+{txt}{space 4}prtystrA {c |}{col 14}{res}{space 2} .1639691{col 26}{space 2} .0427782{col 37}{space 1}    3.83{col 46}{space 3}0.000{col 54}{space 4} .0795207{col 67}{space 3} .2484175
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 19.72553{col 26}{space 2} 2.354919{col 37}{space 1}    8.38{col 46}{space 3}0.000{col 54}{space 4} 15.07668{col 67}{space 3} 24.37437
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using labassignment1-2, excel
+{txt}{browse `"labassignment1-2.xml"'}
+{browse `"C:\ECON108\Lab1"' :dir}{com} : {txt}{stata `"seeout using "labassignment1-2.txt""':seeout}
+
+{com}. 
+. reg voteA expendA shareA prtystrA expendB, robust
+
+{txt}Linear regression                               Number of obs     = {res}       173
+                                                {txt}F(4, 168)         =  {res}   333.47
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.8682
+                                                {txt}Root MSE          =    {res} 6.1668
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       voteA{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}expendA {c |}{col 14}{res}{space 2}-.0066701{col 26}{space 2} .0025726{col 37}{space 1}   -2.59{col 46}{space 3}0.010{col 54}{space 4}-.0117488{col 67}{space 3}-.0015914
+{txt}{space 6}shareA {c |}{col 14}{res}{space 2} .4943951{col 26}{space 2} .0263825{col 37}{space 1}   18.74{col 46}{space 3}0.000{col 54}{space 4} .4423112{col 67}{space 3}  .546479
+{txt}{space 4}prtystrA {c |}{col 14}{res}{space 2} .1572717{col 26}{space 2} .0425394{col 37}{space 1}    3.70{col 46}{space 3}0.000{col 54}{space 4}  .073291{col 67}{space 3} .2412524
+{txt}{space 5}expendB {c |}{col 14}{res}{space 2} .0042674{col 26}{space 2} .0026378{col 37}{space 1}    1.62{col 46}{space 3}0.108{col 54}{space 4}-.0009401{col 67}{space 3} .0094748
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 18.19555{col 26}{space 2} 2.555094{col 37}{space 1}    7.12{col 46}{space 3}0.000{col 54}{space 4} 13.15132{col 67}{space 3} 23.23977
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using labassignment1-2, excel
+{txt}{browse `"labassignment1-2.xml"'}
+{browse `"C:\ECON108\Lab1"' :dir}{com} : {txt}{stata `"seeout using "labassignment1-2.txt""':seeout}
+
+{com}. 
+. reg voteA expendA shareA prtystrA expendB lexpendA, robust
+
+{txt}Linear regression                               Number of obs     = {res}       173
+                                                {txt}F(5, 167)         =  {res}   265.18
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.8682
+                                                {txt}Root MSE          =    {res}  6.185
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       voteA{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}expendA {c |}{col 14}{res}{space 2}-.0065865{col 26}{space 2} .0026611{col 37}{space 1}   -2.48{col 46}{space 3}0.014{col 54}{space 4}-.0118402{col 67}{space 3}-.0013327
+{txt}{space 6}shareA {c |}{col 14}{res}{space 2} .4968437{col 26}{space 2} .0310636{col 37}{space 1}   15.99{col 46}{space 3}0.000{col 54}{space 4} .4355158{col 67}{space 3} .5581715
+{txt}{space 4}prtystrA {c |}{col 14}{res}{space 2} .1572619{col 26}{space 2} .0427002{col 37}{space 1}    3.68{col 46}{space 3}0.000{col 54}{space 4} .0729602{col 67}{space 3} .2415637
+{txt}{space 5}expendB {c |}{col 14}{res}{space 2} .0044296{col 26}{space 2} .0027563{col 37}{space 1}    1.61{col 46}{space 3}0.110{col 54}{space 4}-.0010121{col 67}{space 3} .0098714
+{txt}{space 4}lexpendA {c |}{col 14}{res}{space 2}-.0645166{col 26}{space 2} .4814814{col 37}{space 1}   -0.13{col 46}{space 3}0.894{col 54}{space 4}-1.015091{col 67}{space 3}  .886058
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 18.31972{col 26}{space 2} 2.764944{col 37}{space 1}    6.63{col 46}{space 3}0.000{col 54}{space 4} 12.86097{col 67}{space 3} 23.77847
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using labassignment1-2, excel
+{txt}{browse `"labassignment1-2.xml"'}
+{browse `"C:\ECON108\Lab1"' :dir}{com} : {txt}{stata `"seeout using "labassignment1-2.txt""':seeout}
+
+{com}. 
+. *Most comprehensive regression would primarily contain shareA and prtystrA, delta most likely being positive (higher shareA would cause a larger % vote for president)
+. 
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\ECON108\Lab1\labassignment1-2.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}15 Apr 2022, 10:57:09
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

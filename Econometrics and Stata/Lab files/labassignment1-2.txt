@@ -1,0 +1,42 @@
+    	    Table 1: Regression Analysis on Expenditures effect on Vote
+   	   Dependent Variable: Percentage of Vote Received by Candidate
+(1)    (2)	   	(3)	   	(4)		(5)
+Campaign			0.0236***	-0.00243	-0.00323*	-0.00667**	-0.00659**
+Expenditures		(0.00480)	(0.00170)	(0.00173)	(0.00257)	(0.00266)
+
+Expenditures %				0.473***	0.463***	0.494***	0.497***
+Related to 	Opponent			(0.0146)	(0.0138)	(0.0264)	(0.0311)
+
+% voted for President					0.164***	0.157***	0.157***
+								(0.0428)	(0.0425)	(0.0427)
+
+Opponent Campaign								0.00427	0.00443
+expenditures								(0.00264)	(0.00276)
+
+Log Campaign										-0.0645
+Expenditures										(0.481)
+
+Constant			43.17***	27.09***	19.73***	18.20***	18.32***
+				(1.934)	(0.932)	(2.355)	(2.555)	(2.765)
+					
+Observations		173		173		173		173		173
+R-squared			0.156		0.857		0.866		0.868		0.868
+Robust standard errors in parentheses: *** p<0.01, ** p<0.05, * p<0.1	
+
+Initially, when comparing campaign expenditures to the percentage of vote received by the candidate, there is a large 
+statistical significance (t-test 0.0236/0.00480 > 2) in comparing Campaign expenditures to the percentage vote, 
+but there are still biases since adding variable B^2 (Expenditures as a % related to the opponent) Campaign expenditures 
+becomes less significant and R-squared (correlation coefficient) increases, giving a stronger relationship. Adding another 
+variable in % voted for the President, related to B^2 as Expenditures as a % related to the opponent increase, % voted for 
+the president increase, we can also see statistical significance and an increased R^2. Although accounting for Opponent campaign
+expenditures and the log campaign expenditures increased the significance of campaign expenditures, both variables
+proved to be statistically insignificant in the t-test. In our final regression model, the equation would be:
+% Vote for candidate(hat) = Constant (B0)(hat) + (B1 = 0.473)Expenditures % related to Opponent(hat) + (B2 = 0.164)% voted for President campaign(hat)
+In this model we find that campaign expenditures (in terms of increasing value in 1000s) have LITTLE influence in the outcome of an election, but the 
+% of campaign expenditures related to the opponent has a larger influence on % votes for a candidate. In our error term, the model contains
+omitted variable biases in the differences on the campaign expenditures of both candidate and opponent (in the 1000s) and other possible variables not included
+in the dataset.
+2) The estimate of B1 is biased away from zero, this is because the estimated B1 (if we were to keep Campaign expenditures) would be positive, and the bias
+introducing Expenditures % related to opponent would also be positive. Given both are in the same direction, estimated B1 would be an upper bound, and true
+B1 would be closer to 0.  
+  			

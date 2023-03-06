@@ -1,0 +1,21 @@
+	(1)	(2)	(3)	(4)	(5)	(6)	(7)	(8)	(9)
+	OLS	DV	DV	DV	xi	areg	areg	xtreg	xtreg
+VARIABLES	violentrate	violentrate	violentrate	violentrate	violentrate	violentrate	violentrate	violentrate	violentrate
+									
+uerate	26.17***	-10.92***	56.52***	-10.04***	-10.04***	-10.92***	-10.04***	-10.92***	-10.04**
+	(3.319)	(1.388)	(4.998)	(2.077)	(2.077)	(1.388)	(2.077)	(1.954)	(3.962)
+Constant	306.9***	589.5***	-17.91	509.0***	509.0***	534.4***	455.0***	534.4***	455.0***
+	(18.78)	(22.82)	(43.88)	(23.59)	(23.59)	(8.556)	(18.59)	(11.99)	(32.94)
+									
+Observations	1,938	1,938	1,938	1,938	1,938	1,938	1,938	1,938	1,938
+R-squared	0.034	0.835	0.141	0.886	0.886	0.835	0.886	0.025	0.322
+State FE		Y	N	Y	N	Y	Y	Y	Y
+Year FE		N	Y	Y	Y	N	Y	N	Y
+Number of fips								51	51
+Robust standard errors in parentheses									
+*** p<0.01, ** p<0.05, * p<0.1									
+A. After the first regression with no controls, it can be seen that the R^2 is very low, as we are just regressing violentrate on uerate without any fixed effects.
+B. After adding state fixed effects to the regression, the R^2 increases from 0.034 to 0.835 (State fixed effects) or to 0.141 when including Time fixed effects, showing how the unemployment rate explains more of the variation in violent rate after controlling for differences in each state or in time fixed effects; increasing to 0.886 when controlling for both state and time fixed effects.
+The state and year dummy variables are each catching each of the individual effects of each state / year and controlling for their differences in this case. For example, controlling for a certain state with a certain fips code, the coefficient can be included through the dummy variable generated, and controlling for a certain time period, its coefficient would be included from one of the year dummy variables.
+E. The absorbed regression produces the same R-squared values as the bias from different states are absorbed, without time fixed effects (0.835), and with time fixed effects (0.886). 
+F. After including the entity fixed effects with xtreg and including the effects for year fixed effects, it produces a lower R^2 than in part D. Without time fixed effects it produces an R^2 of 0.025, and with time fixed effects 0.322, in comparison to part D which produces 0.835 and 0.886 respectively.

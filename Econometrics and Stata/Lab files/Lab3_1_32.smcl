@@ -1,0 +1,115 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Econ108\Lab3\Lab3_1_32.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}29 Apr 2022, 12:16:08
+{txt}
+{com}. 
+. *Data Transformation
+. 
+. /*
+> 
+> *Import excel
+> import excel "UnemploymentRate_76_13.xlsx", sheet("Sheet1") firstrow clear
+> 
+> *Reshape
+> reshape long uerate, i(fips) j(year)
+> save uerate, replace
+> 
+> import excel "ViolentCrime_76_13.xlsx", sheet("Sheet1") firstrow clear
+> 
+> reshape long violentrate, i(fips) j(year)
+> save violentrate, replace
+> 
+> *Merge
+> merge 1:1 fips year using uerate.dta
+> *Good practice to drop this variable
+> drop _merge
+> 
+> save lab3_data, replace
+> 
+> log close
+> 
+> */
+. 
+. 
+. use lab3_data, clear
+{txt}
+{com}. *A
+. twoway (scatter violentrate uerate)(lfit violentrate uerate)
+{res}{txt}
+{com}. graph export scatter.png, replace
+{txt}(file scatter.png written in PNG format)
+
+{com}. 
+. twoway (scatter violentrate uerate)(lfit violentrate uerate) (scatter violentrate uerate if fips==6, mcolor(yellow))(lfit violentrate uerate if fips==6, lcolor(yellow))(scatter violentrate uerate if fips==11, mcolor(red))(lfit violentrate uerate if fips==11, lcolor(red))
+{res}{txt}
+{com}. 
+. *B
+. reg violentrate uerate, robust
+
+{txt}Linear regression                               Number of obs     = {res}     1,938
+                                                {txt}F(1, 1936)        =  {res}    62.19
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0340
+                                                {txt}Root MSE          =    {res} 292.76
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1} violentrate{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}uerate {c |}{col 14}{res}{space 2} 26.17347{col 26}{space 2} 3.318877{col 37}{space 1}    7.89{col 46}{space 3}0.000{col 54}{space 4} 19.66452{col 67}{space 3} 32.68242
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 306.8934{col 26}{space 2} 18.77873{col 37}{space 1}   16.34{col 46}{space 3}0.000{col 54}{space 4} 270.0647{col 67}{space 3} 343.7221
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using lab3_1_32, excel replace
+{txt}{browse `"lab3_1_32.xml"'}
+{browse `"C:\Econ108\Lab3"' :dir}{com} : {txt}{stata `"seeout using "lab3_1_32.txt""':seeout}
+
+{com}. 
+. *D
+. preserve
+{txt}
+{com}. 
+. collapse (mean)violentrate (mean)uerate, by(fips)
+{txt}
+{com}. 
+. reg violentrate uerate, robust
+
+{txt}Linear regression                               Number of obs     = {res}        51
+                                                {txt}F(1, 49)          =  {res}     9.51
+                                                {txt}Prob > F          = {res}    0.0033
+                                                {txt}R-squared         = {res}    0.2341
+                                                {txt}Root MSE          =    {res} 242.34
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1} violentrate{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}uerate {c |}{col 14}{res}{space 2} 115.7516{col 26}{space 2} 37.52971{col 37}{space 1}    3.08{col 46}{space 3}0.003{col 54}{space 4} 40.33285{col 67}{space 3} 191.1704
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-242.5655{col 26}{space 2}  207.482{col 37}{space 1}   -1.17{col 46}{space 3}0.248{col 54}{space 4}-659.5161{col 67}{space 3} 174.3851
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using lab3_1_32, excel replace
+{txt}{browse `"lab3_1_32.xml"'}
+{browse `"C:\Econ108\Lab3"' :dir}{com} : {txt}{stata `"seeout using "lab3_1_32.txt""':seeout}
+
+{com}. 
+. twoway (scatter violentrate uerate)(lfit violentrate uerate)
+{res}{txt}
+{com}. graph export scatter2.png, replace
+{txt}(file scatter2.png written in PNG format)
+
+{com}. 
+. restore
+{txt}
+{com}. 
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Econ108\Lab3\Lab3_1_32.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}29 Apr 2022, 12:16:12
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
