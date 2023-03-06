@@ -1,0 +1,39 @@
+Place in O1
+Unique distinct list
+Place in O2
+=IFERROR(INDEX($A$4:$A$515, MATCH(0,COUNTIF($O$1:O1, $A$4:$A$515), 0)),"")
+=C2/B2 * 100000
+
+Population
+ViolentCrime
+ViolentCrimeRatePer100k
+
+Sub VBA_to_remove()
+Dim Rng As Range
+Dim WorkRng As Range
+On Error Resume Next
+xTitleId = "Non-alphanumeric text remove"
+Set WorkRng = Application.Selection
+Set WorkRng = Application.InputBox("Range", xTitleId, WorkRng.Address, Type:=8)
+For Each Rng In WorkRng
+            xOut = ""
+            For i = 1 To Len(Rng.Value)
+            xTemp = Mid(Rng.Value, i, 1)
+                If xTemp Like "[a-z.]" Or xTemp Like "[A-Z.]" Then
+            xStr = xTemp
+            Else
+            xStr = ""
+            End If
+            xOut = xOut & xStr
+            Next i
+            Rng.Value = xOut
+Next
+End Sub
+
+What correlates with violent crime?
+Possible correlates of violence, including values, poverty, low education, abuse and neglect, alcohol abuse, and shame. Sociological theories surrounding crime causation, including social control, conflict and strain, and anomie.
+
+reshape long CONNECTICUT IDAHO MARYLAND NORTHCAROLINA NEWYORK SOUTHDAKOTA WISCONSIN ALASKA ILLINOIS MAINE NORTHDAKOTA OHIO TENNESSEE WESTVIRGINIA ALABAMA DELAWARE INDIANA MICHIGAN NEBRASKA OKLAHOMA TEXAS WYOMING ARKANSAS FLORIDA KANSAS MINNESOTA NEWHAMPSHIRE OREGON UTAH ARIZONA GEORGIA KENTUCKY MISSOURI NEWJERSEY PENNSYLVANIA VIRGINIA CALIFORNIA HAWAII LOUISIANA MISSISSIPPI NEWMEXICO RHODEISLAND VERMONT, i(Year) j(State)
+=Annual!A2:A16
+=Annual!AZ1
+=Annual!AZ2:AZ16

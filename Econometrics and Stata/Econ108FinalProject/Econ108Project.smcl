@@ -1,0 +1,946 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\Econ108FinalData\Econ108Project.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 Jun 2022, 11:29:06
+{txt}
+{com}. preserve
+{txt}
+{com}. encode State, gen(StateNum)
+{txt}
+{com}.  
+. reg ViolentCrimeRatePer100k Edu_Attainment, robust
+
+{txt}Linear regression                               Number of obs     = {res}       700
+                                                {txt}F(1, 698)         =  {res}    63.95
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0782
+                                                {txt}Root MSE          =    {res} 144.98
+
+{txt}{hline 15}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 16}{c |}{col 28}    Robust
+{col 1}ViolentCr~100k{col 16}{c |}      Coef.{col 28}   Std. Err.{col 40}      t{col 48}   P>|t|{col 56}     [95% Con{col 69}f. Interval]
+{hline 15}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+Edu_Attainment {c |}{col 16}{res}{space 2}-8.059037{col 28}{space 2}  1.00779{col 39}{space 1}   -8.00{col 48}{space 3}0.000{col 56}{space 4} -10.0377{col 69}{space 3}-6.080375
+{txt}{space 9}_cons {c |}{col 16}{res}{space 2} 605.2324{col 28}{space 2} 30.99584{col 39}{space 1}   19.53{col 48}{space 3}0.000{col 56}{space 4} 544.3761{col 69}{space 3} 666.0886
+{txt}{hline 15}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using FinalRegTable, word replace title("Educational Attainment Rate on Violent Crime (Per 100k)")
+{txt}{stata `"shellout using `"FinalRegTable.rtf"'"':FinalRegTable.rtf}
+{browse `"D:\Econ108FinalData"' :dir}{com} : {txt}{stata `"seeout using "FinalRegTable.txt""':seeout}
+
+{com}. 
+. reg ViolentCrimeRatePer100k Edu_Attainment i.StateNum, robust
+
+{txt}Linear regression                               Number of obs     = {res}       700
+                                                {txt}F(50, 649)        =  {res}   190.22
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.8988
+                                                {txt}Root MSE          =    {res} 49.823
+
+{txt}{hline 15}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 16}{c |}{col 28}    Robust
+{col 1}ViolentCr~100k{col 16}{c |}      Coef.{col 28}   Std. Err.{col 40}      t{col 48}   P>|t|{col 56}     [95% Con{col 69}f. Interval]
+{hline 15}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+Edu_Attainment {c |}{col 16}{res}{space 2}-5.875636{col 28}{space 2} 1.070509{col 39}{space 1}   -5.49{col 48}{space 3}0.000{col 56}{space 4}-7.977715{col 69}{space 3}-3.773556
+{txt}{space 14} {c |}
+{space 6}StateNum {c |}
+{space 7}ALASKA  {c |}{col 16}{res}{space 2} 273.0864{col 28}{space 2} 31.79788{col 39}{space 1}    8.59{col 48}{space 3}0.000{col 56}{space 4} 210.6473{col 69}{space 3} 335.5256
+{txt}{space 6}ARIZONA  {c |}{col 16}{res}{space 2} 7.097746{col 28}{space 2} 18.84626{col 39}{space 1}    0.38{col 48}{space 3}0.707{col 56}{space 4}-29.90926{col 69}{space 3} 44.10475
+{txt}{space 5}ARKANSAS  {c |}{col 16}{res}{space 2} 43.32737{col 28}{space 2} 18.53614{col 39}{space 1}    2.34{col 48}{space 3}0.020{col 56}{space 4} 6.929333{col 69}{space 3} 79.72541
+{txt}{space 3}CALIFORNIA  {c |}{col 16}{res}{space 2} 38.21951{col 28}{space 2}  20.4192{col 39}{space 1}    1.87{col 48}{space 3}0.062{col 56}{space 4}-1.876172{col 69}{space 3} 78.31519
+{txt}{space 5}COLORADO  {c |}{col 16}{res}{space 2}-31.38967{col 28}{space 2} 23.40961{col 39}{space 1}   -1.34{col 48}{space 3}0.180{col 56}{space 4}-77.35739{col 69}{space 3} 14.57805
+{txt}{space 2}CONNECTICUT  {c |}{col 16}{res}{space 2}-127.2864{col 28}{space 2} 22.18407{col 39}{space 1}   -5.74{col 48}{space 3}0.000{col 56}{space 4}-170.8476{col 69}{space 3}-83.72523
+{txt}{space 5}DELAWARE  {c |}{col 16}{res}{space 2} 128.1056{col 28}{space 2} 28.71326{col 39}{space 1}    4.46{col 48}{space 3}0.000{col 56}{space 4} 71.72353{col 69}{space 3} 184.4877
+{txt}{space 6}FLORIDA  {c |}{col 16}{res}{space 2} 88.66525{col 28}{space 2} 32.97462{col 39}{space 1}    2.69{col 48}{space 3}0.007{col 56}{space 4} 23.91544{col 69}{space 3} 153.4151
+{txt}{space 6}GEORGIA  {c |}{col 16}{res}{space 2}-29.74695{col 28}{space 2} 19.91513{col 39}{space 1}   -1.49{col 48}{space 3}0.136{col 56}{space 4}-68.85281{col 69}{space 3} 9.358917
+{txt}{space 7}HAWAII  {c |}{col 16}{res}{space 2}-145.5477{col 28}{space 2} 17.76686{col 39}{space 1}   -8.19{col 48}{space 3}0.000{col 56}{space 4}-180.4352{col 69}{space 3}-110.6602
+{txt}{space 8}IDAHO  {c |}{col 16}{res}{space 2}-223.5459{col 28}{space 2}  15.2615{col 39}{space 1}  -14.65{col 48}{space 3}0.000{col 56}{space 4}-253.5137{col 69}{space 3} -193.578
+{txt}{space 5}ILLINOIS  {c |}{col 16}{res}{space 2} 33.83335{col 28}{space 2} 22.66703{col 39}{space 1}    1.49{col 48}{space 3}0.136{col 56}{space 4}-10.67621{col 69}{space 3} 78.34292
+{txt}{space 6}INDIANA  {c |}{col 16}{res}{space 2}-100.1797{col 28}{space 2}  18.0723{col 39}{space 1}   -5.54{col 48}{space 3}0.000{col 56}{space 4}-135.6669{col 69}{space 3}-64.69246
+{txt}{space 9}IOWA  {c |}{col 16}{res}{space 2}-165.4848{col 28}{space 2} 15.56997{col 39}{space 1}  -10.63{col 48}{space 3}0.000{col 56}{space 4}-196.0584{col 69}{space 3}-134.9112
+{txt}{space 7}KANSAS  {c |}{col 16}{res}{space 2}-22.69093{col 28}{space 2} 19.65621{col 39}{space 1}   -1.15{col 48}{space 3}0.249{col 56}{space 4}-61.28838{col 69}{space 3} 15.90652
+{txt}{space 5}KENTUCKY  {c |}{col 16}{res}{space 2}-228.6801{col 28}{space 2} 15.60962{col 39}{space 1}  -14.65{col 48}{space 3}0.000{col 56}{space 4}-259.3315{col 69}{space 3}-198.0286
+{txt}{space 4}LOUISIANA  {c |}{col 16}{res}{space 2}  111.228{col 28}{space 2} 22.57045{col 39}{space 1}    4.93{col 48}{space 3}0.000{col 56}{space 4} 66.90805{col 69}{space 3} 155.5479
+{txt}{space 8}MAINE  {c |}{col 16}{res}{space 2}-307.1446{col 28}{space 2}  16.3631{col 39}{space 1}  -18.77{col 48}{space 3}0.000{col 56}{space 4}-339.2757{col 69}{space 3}-275.0136
+{txt}{space 5}MARYLAND  {c |}{col 16}{res}{space 2} 146.9673{col 28}{space 2} 29.64369{col 39}{space 1}    4.96{col 48}{space 3}0.000{col 56}{space 4} 88.75815{col 69}{space 3} 205.1764
+{txt}MASSACHUSETTS  {c |}{col 16}{res}{space 2} 46.46873{col 28}{space 2} 25.00055{col 39}{space 1}    1.86{col 48}{space 3}0.064{col 56}{space 4}-2.623005{col 69}{space 3} 95.56046
+{txt}{space 5}MICHIGAN  {c |}{col 16}{res}{space 2}  29.4225{col 28}{space 2} 17.84693{col 39}{space 1}    1.65{col 48}{space 3}0.100{col 56}{space 4}-5.622188{col 69}{space 3} 64.46719
+{txt}{space 4}MINNESOTA  {c |}{col 16}{res}{space 2}-154.8101{col 28}{space 2} 19.48796{col 39}{space 1}   -7.94{col 48}{space 3}0.000{col 56}{space 4}-193.0772{col 69}{space 3}-116.5431
+{txt}{space 2}MISSISSIPPI  {c |}{col 16}{res}{space 2} -200.449{col 28}{space 2}  15.0377{col 39}{space 1}  -13.33{col 48}{space 3}0.000{col 56}{space 4}-229.9774{col 69}{space 3}-170.9206
+{txt}{space 5}MISSOURI  {c |}{col 16}{res}{space 2} 47.87965{col 28}{space 2} 18.13691{col 39}{space 1}    2.64{col 48}{space 3}0.008{col 56}{space 4} 12.26554{col 69}{space 3} 83.49377
+{txt}{space 6}MONTANA  {c |}{col 16}{res}{space 2}-115.9031{col 28}{space 2} 23.62819{col 39}{space 1}   -4.91{col 48}{space 3}0.000{col 56}{space 4}-162.3001{col 69}{space 3}-69.50621
+{txt}{space 5}NEBRASKA  {c |}{col 16}{res}{space 2}-141.4385{col 28}{space 2} 17.23414{col 39}{space 1}   -8.21{col 48}{space 3}0.000{col 56}{space 4}-175.2799{col 69}{space 3}-107.5971
+{txt}{space 7}NEVADA  {c |}{col 16}{res}{space 2} 176.8476{col 28}{space 2} 24.68986{col 39}{space 1}    7.16{col 48}{space 3}0.000{col 56}{space 4} 128.3659{col 69}{space 3} 225.3292
+{txt}{space 1}NEWHAMPSHIRE  {c |}{col 16}{res}{space 2}-218.0836{col 28}{space 2} 21.19011{col 39}{space 1}  -10.29{col 48}{space 3}0.000{col 56}{space 4} -259.693{col 69}{space 3}-176.4741
+{txt}{space 4}NEWJERSEY  {c |}{col 16}{res}{space 2}-101.3281{col 28}{space 2} 22.38448{col 39}{space 1}   -4.53{col 48}{space 3}0.000{col 56}{space 4}-145.2829{col 69}{space 3}-57.37338
+{txt}{space 4}NEWMEXICO  {c |}{col 16}{res}{space 2} 222.7713{col 28}{space 2} 30.13123{col 39}{space 1}    7.39{col 48}{space 3}0.000{col 56}{space 4} 163.6048{col 69}{space 3} 281.9377
+{txt}{space 6}NEWYORK  {c |}{col 16}{res}{space 2}-9.923452{col 28}{space 2} 19.23044{col 39}{space 1}   -0.52{col 48}{space 3}0.606{col 56}{space 4}-47.68483{col 69}{space 3} 27.83793
+{txt}NORTHCAROLINA  {c |}{col 16}{res}{space 2}-46.51838{col 28}{space 2}  19.7848{col 39}{space 1}   -2.35{col 48}{space 3}0.019{col 56}{space 4}-85.36833{col 69}{space 3}-7.668426
+{txt}{space 2}NORTHDAKOTA  {c |}{col 16}{res}{space 2} -203.357{col 28}{space 2} 22.48724{col 39}{space 1}   -9.04{col 48}{space 3}0.000{col 56}{space 4}-247.5136{col 69}{space 3}-159.2005
+{txt}{space 9}OHIO  {c |}{col 16}{res}{space 2}-135.7184{col 28}{space 2} 15.53707{col 39}{space 1}   -8.74{col 48}{space 3}0.000{col 56}{space 4}-166.2274{col 69}{space 3}-105.2094
+{txt}{space 5}OKLAHOMA  {c |}{col 16}{res}{space 2} 7.755192{col 28}{space 2}  16.4848{col 39}{space 1}    0.47{col 48}{space 3}0.638{col 56}{space 4}-24.61479{col 69}{space 3} 40.12518
+{txt}{space 7}OREGON  {c |}{col 16}{res}{space 2}-153.5283{col 28}{space 2} 17.98006{col 39}{space 1}   -8.54{col 48}{space 3}0.000{col 56}{space 4}-188.8344{col 69}{space 3}-118.2222
+{txt}{space 1}PENNSYLVANIA  {c |}{col 16}{res}{space 2}-78.08396{col 28}{space 2}  18.2163{col 39}{space 1}   -4.29{col 48}{space 3}0.000{col 56}{space 4} -113.854{col 69}{space 3}-42.31396
+{txt}{space 2}RHODEISLAND  {c |}{col 16}{res}{space 2}-171.8493{col 28}{space 2} 17.91928{col 39}{space 1}   -9.59{col 48}{space 3}0.000{col 56}{space 4}-207.0361{col 69}{space 3}-136.6625
+{txt}SOUTHCAROLINA  {c |}{col 16}{res}{space 2} 139.5574{col 28}{space 2} 30.46469{col 39}{space 1}    4.58{col 48}{space 3}0.000{col 56}{space 4} 79.73609{col 69}{space 3} 199.3786
+{txt}{space 2}SOUTHDAKOTA  {c |}{col 16}{res}{space 2}-135.4494{col 28}{space 2} 32.03685{col 39}{space 1}   -4.23{col 48}{space 3}0.000{col 56}{space 4}-198.3578{col 69}{space 3}-72.54104
+{txt}{space 4}TENNESSEE  {c |}{col 16}{res}{space 2} 196.5288{col 28}{space 2}  19.8342{col 39}{space 1}    9.91{col 48}{space 3}0.000{col 56}{space 4} 157.5819{col 69}{space 3} 235.4758
+{txt}{space 8}TEXAS  {c |}{col 16}{res}{space 2} 7.826845{col 28}{space 2} 18.22699{col 39}{space 1}    0.43{col 48}{space 3}0.668{col 56}{space 4}-27.96414{col 69}{space 3} 43.61783
+{txt}{space 9}UTAH  {c |}{col 16}{res}{space 2} -190.737{col 28}{space 2} 18.16361{col 39}{space 1}  -10.50{col 48}{space 3}0.000{col 56}{space 4}-226.4036{col 69}{space 3}-155.0705
+{txt}{space 6}VERMONT  {c |}{col 16}{res}{space 2}-248.4717{col 28}{space 2}  21.5693{col 39}{space 1}  -11.52{col 48}{space 3}0.000{col 56}{space 4}-290.8257{col 69}{space 3}-206.1177
+{txt}{space 5}VIRGINIA  {c |}{col 16}{res}{space 2} -167.411{col 28}{space 2} 21.46824{col 39}{space 1}   -7.80{col 48}{space 3}0.000{col 56}{space 4}-209.5666{col 69}{space 3}-125.2554
+{txt}{space 3}WASHINGTON  {c |}{col 16}{res}{space 2}-95.44411{col 28}{space 2} 18.71253{col 39}{space 1}   -5.10{col 48}{space 3}0.000{col 56}{space 4}-132.1885{col 69}{space 3} -58.6997
+{txt}{space 1}WESTVIRGINIA  {c |}{col 16}{res}{space 2}-177.5253{col 28}{space 2} 17.45036{col 39}{space 1}  -10.17{col 48}{space 3}0.000{col 56}{space 4}-211.7912{col 69}{space 3}-143.2593
+{txt}{space 4}WISCONSIN  {c |}{col 16}{res}{space 2}-151.8715{col 28}{space 2} 17.57598{col 39}{space 1}   -8.64{col 48}{space 3}0.000{col 56}{space 4}-186.3841{col 69}{space 3}-117.3588
+{txt}{space 6}WYOMING  {c |}{col 16}{res}{space 2}-226.8264{col 28}{space 2} 15.57982{col 39}{space 1}  -14.56{col 48}{space 3}0.000{col 56}{space 4}-257.4193{col 69}{space 3}-196.2334
+{txt}{space 14} {c |}
+{space 9}_cons {c |}{col 16}{res}{space 2} 597.3956{col 28}{space 2} 28.31155{col 39}{space 1}   21.10{col 48}{space 3}0.000{col 56}{space 4} 541.8023{col 69}{space 3} 652.9889
+{txt}{hline 15}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using FinalRegTable, word keep(Edu_Attainment) addtext(State FE, Y, Year FE, N) cttop(DV)
+{txt}{stata `"shellout using `"FinalRegTable.rtf"'"':FinalRegTable.rtf}
+{browse `"D:\Econ108FinalData"' :dir}{com} : {txt}{stata `"seeout using "FinalRegTable.txt""':seeout}
+
+{com}. 
+. reg ViolentCrimeRatePer100k Edu_Attainment i.StateNum i.Year, robust
+
+{txt}Linear regression                               Number of obs     = {res}       700
+                                                {txt}F(63, 636)        =  {res}   206.27
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.9144
+                                                {txt}Root MSE          =    {res} 46.292
+
+{txt}{hline 15}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 16}{c |}{col 28}    Robust
+{col 1}ViolentCr~100k{col 16}{c |}      Coef.{col 28}   Std. Err.{col 40}      t{col 48}   P>|t|{col 56}     [95% Con{col 69}f. Interval]
+{hline 15}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+Edu_Attainment {c |}{col 16}{res}{space 2}-17.98449{col 28}{space 2} 4.504191{col 39}{space 1}   -3.99{col 48}{space 3}0.000{col 56}{space 4}-26.82938{col 69}{space 3} -9.13961
+{txt}{space 14} {c |}
+{space 6}StateNum {c |}
+{space 7}ALASKA  {c |}{col 16}{res}{space 2}  330.517{col 28}{space 2} 38.21452{col 39}{space 1}    8.65{col 48}{space 3}0.000{col 56}{space 4} 255.4751{col 69}{space 3} 405.5589
+{txt}{space 6}ARIZONA  {c |}{col 16}{res}{space 2} 54.66826{col 28}{space 2} 22.84142{col 39}{space 1}    2.39{col 48}{space 3}0.017{col 56}{space 4} 9.814546{col 69}{space 3} 99.52198
+{txt}{space 5}ARKANSAS  {c |}{col 16}{res}{space 2} 13.05523{col 28}{space 2} 18.44032{col 39}{space 1}    0.71{col 48}{space 3}0.479{col 56}{space 4}-23.15604{col 69}{space 3} 49.26649
+{txt}{space 3}CALIFORNIA  {c |}{col 16}{res}{space 2} 135.7823{col 28}{space 2} 38.62303{col 39}{space 1}    3.52{col 48}{space 3}0.000{col 56}{space 4} 59.93824{col 69}{space 3} 211.6264
+{txt}{space 5}COLORADO  {c |}{col 16}{res}{space 2} 145.9186{col 28}{space 2}  66.3091{col 39}{space 1}    2.20{col 48}{space 3}0.028{col 56}{space 4} 15.70737{col 69}{space 3} 276.1299
+{txt}{space 2}CONNECTICUT  {c |}{col 16}{res}{space 2} 38.25897{col 28}{space 2} 63.63781{col 39}{space 1}    0.60{col 48}{space 3}0.548{col 56}{space 4}-86.70667{col 69}{space 3} 163.2246
+{txt}{space 5}DELAWARE  {c |}{col 16}{res}{space 2} 202.9211{col 28}{space 2} 39.55901{col 39}{space 1}    5.13{col 48}{space 3}0.000{col 56}{space 4}  125.239{col 69}{space 3} 280.6032
+{txt}{space 6}FLORIDA  {c |}{col 16}{res}{space 2} 136.8412{col 28}{space 2} 33.76951{col 39}{space 1}    4.05{col 48}{space 3}0.000{col 56}{space 4} 70.52799{col 69}{space 3} 203.1544
+{txt}{space 6}GEORGIA  {c |}{col 16}{res}{space 2} 37.45722{col 28}{space 2} 29.09538{col 39}{space 1}    1.29{col 48}{space 3}0.198{col 56}{space 4}-19.67741{col 69}{space 3} 94.59185
+{txt}{space 7}HAWAII  {c |}{col 16}{res}{space 2}-55.07723{col 28}{space 2} 36.01273{col 39}{space 1}   -1.53{col 48}{space 3}0.127{col 56}{space 4}-125.7955{col 69}{space 3} 15.64099
+{txt}{space 8}IDAHO  {c |}{col 16}{res}{space 2}-196.2144{col 28}{space 2} 16.13571{col 39}{space 1}  -12.16{col 48}{space 3}0.000{col 56}{space 4}-227.9001{col 69}{space 3}-164.5287
+{txt}{space 5}ILLINOIS  {c |}{col 16}{res}{space 2} 139.5264{col 28}{space 2} 42.28551{col 39}{space 1}    3.30{col 48}{space 3}0.001{col 56}{space 4} 56.49029{col 69}{space 3} 222.5625
+{txt}{space 6}INDIANA  {c |}{col 16}{res}{space 2}-90.75209{col 28}{space 2} 16.75276{col 39}{space 1}   -5.42{col 48}{space 3}0.000{col 56}{space 4}-123.6495{col 69}{space 3}-57.85467
+{txt}{space 9}IOWA  {c |}{col 16}{res}{space 2}-127.4284{col 28}{space 2} 19.20472{col 39}{space 1}   -6.64{col 48}{space 3}0.000{col 56}{space 4}-165.1407{col 69}{space 3}-89.71604
+{txt}{space 7}KANSAS  {c |}{col 16}{res}{space 2} 70.89325{col 28}{space 2} 37.17958{col 39}{space 1}    1.91{col 48}{space 3}0.057{col 56}{space 4} -2.11633{col 69}{space 3} 143.9028
+{txt}{space 5}KENTUCKY  {c |}{col 16}{res}{space 2}-243.9891{col 28}{space 2}   14.462{col 39}{space 1}  -16.87{col 48}{space 3}0.000{col 56}{space 4}-272.3882{col 69}{space 3}-215.5901
+{txt}{space 4}LOUISIANA  {c |}{col 16}{res}{space 2}  98.0812{col 28}{space 2} 20.31526{col 39}{space 1}    4.83{col 48}{space 3}0.000{col 56}{space 4}  58.1881{col 69}{space 3} 137.9743
+{txt}{space 8}MAINE  {c |}{col 16}{res}{space 2}-241.9298{col 28}{space 2} 28.49652{col 39}{space 1}   -8.49{col 48}{space 3}0.000{col 56}{space 4}-297.8884{col 69}{space 3}-185.9712
+{txt}{space 5}MARYLAND  {c |}{col 16}{res}{space 2}  319.086{col 28}{space 2} 67.00288{col 39}{space 1}    4.76{col 48}{space 3}0.000{col 56}{space 4} 187.5124{col 69}{space 3} 450.6597
+{txt}MASSACHUSETTS  {c |}{col 16}{res}{space 2} 254.0492{col 28}{space 2}  77.9615{col 39}{space 1}    3.26{col 48}{space 3}0.001{col 56}{space 4} 100.9561{col 69}{space 3} 407.1422
+{txt}{space 5}MICHIGAN  {c |}{col 16}{res}{space 2} 70.24665{col 28}{space 2}  20.4996{col 39}{space 1}    3.43{col 48}{space 3}0.001{col 56}{space 4} 29.99157{col 69}{space 3} 110.5017
+{txt}{space 4}MINNESOTA  {c |}{col 16}{res}{space 2}-31.99169{col 28}{space 2}  47.1553{col 39}{space 1}   -0.68{col 48}{space 3}0.498{col 56}{space 4}-124.5906{col 69}{space 3} 60.60721
+{txt}{space 2}MISSISSIPPI  {c |}{col 16}{res}{space 2}-234.1808{col 28}{space 2} 18.41911{col 39}{space 1}  -12.71{col 48}{space 3}0.000{col 56}{space 4}-270.3504{col 69}{space 3}-198.0112
+{txt}{space 5}MISSOURI  {c |}{col 16}{res}{space 2} 90.69312{col 28}{space 2} 20.79404{col 39}{space 1}    4.36{col 48}{space 3}0.000{col 56}{space 4} 49.85984{col 69}{space 3} 131.5264
+{txt}{space 6}MONTANA  {c |}{col 16}{res}{space 2}-41.86611{col 28}{space 2} 34.05891{col 39}{space 1}   -1.23{col 48}{space 3}0.219{col 56}{space 4}-108.7476{col 69}{space 3}  25.0154
+{txt}{space 5}NEBRASKA  {c |}{col 16}{res}{space 2}-67.92042{col 28}{space 2} 30.14585{col 39}{space 1}   -2.25{col 48}{space 3}0.025{col 56}{space 4}-127.1179{col 69}{space 3}-8.722972
+{txt}{space 7}NEVADA  {c |}{col 16}{res}{space 2} 171.5716{col 28}{space 2}   23.855{col 39}{space 1}    7.19{col 48}{space 3}0.000{col 56}{space 4} 124.7275{col 69}{space 3} 218.4156
+{txt}{space 1}NEWHAMPSHIRE  {c |}{col 16}{res}{space 2}-82.72382{col 28}{space 2} 52.85863{col 39}{space 1}   -1.57{col 48}{space 3}0.118{col 56}{space 4}-186.5224{col 69}{space 3} 21.07473
+{txt}{space 4}NEWJERSEY  {c |}{col 16}{res}{space 2} 61.10357{col 28}{space 2} 61.43287{col 39}{space 1}    0.99{col 48}{space 3}0.320{col 56}{space 4}-59.53223{col 69}{space 3} 181.7394
+{txt}{space 4}NEWMEXICO  {c |}{col 16}{res}{space 2} 256.1571{col 28}{space 2} 30.85962{col 39}{space 1}    8.30{col 48}{space 3}0.000{col 56}{space 4}  195.558{col 69}{space 3} 316.7562
+{txt}{space 6}NEWYORK  {c |}{col 16}{res}{space 2} 119.0359{col 28}{space 2} 49.66007{col 39}{space 1}    2.40{col 48}{space 3}0.017{col 56}{space 4} 21.51836{col 69}{space 3} 216.5534
+{txt}NORTHCAROLINA  {c |}{col 16}{res}{space 2}   13.161{col 28}{space 2} 26.37354{col 39}{space 1}    0.50{col 48}{space 3}0.618{col 56}{space 4}-38.62874{col 69}{space 3} 64.95074
+{txt}{space 2}NORTHDAKOTA  {c |}{col 16}{res}{space 2}-149.2131{col 28}{space 2} 28.90248{col 39}{space 1}   -5.16{col 48}{space 3}0.000{col 56}{space 4} -205.969{col 69}{space 3}-92.45732
+{txt}{space 9}OHIO  {c |}{col 16}{res}{space 2}-104.6678{col 28}{space 2} 17.01347{col 39}{space 1}   -6.15{col 48}{space 3}0.000{col 56}{space 4}-138.0772{col 69}{space 3}-71.25842
+{txt}{space 5}OKLAHOMA  {c |}{col 16}{res}{space 2} 14.84752{col 28}{space 2} 14.93912{col 39}{space 1}    0.99{col 48}{space 3}0.321{col 56}{space 4}-14.48845{col 69}{space 3} 44.18349
+{txt}{space 7}OREGON  {c |}{col 16}{res}{space 2}-64.87413{col 28}{space 2} 35.54352{col 39}{space 1}   -1.83{col 48}{space 3}0.068{col 56}{space 4} -134.671{col 69}{space 3} 4.922719
+{txt}{space 1}PENNSYLVANIA  {c |}{col 16}{res}{space 2}-15.55035{col 28}{space 2} 26.83062{col 39}{space 1}   -0.58{col 48}{space 3}0.562{col 56}{space 4}-68.23767{col 69}{space 3} 37.13697
+{txt}{space 2}RHODEISLAND  {c |}{col 16}{res}{space 2}-70.04839{col 28}{space 2} 40.15705{col 39}{space 1}   -1.74{col 48}{space 3}0.082{col 56}{space 4}-148.9048{col 69}{space 3} 8.808041
+{txt}SOUTHCAROLINA  {c |}{col 16}{res}{space 2} 168.0997{col 28}{space 2} 29.34772{col 39}{space 1}    5.73{col 48}{space 3}0.000{col 56}{space 4} 110.4695{col 69}{space 3} 225.7298
+{txt}{space 2}SOUTHDAKOTA  {c |}{col 16}{res}{space 2}-92.63596{col 28}{space 2} 34.54729{col 39}{space 1}   -2.68{col 48}{space 3}0.008{col 56}{space 4}-160.4765{col 69}{space 3} -24.7954
+{txt}{space 4}TENNESSEE  {c |}{col 16}{res}{space 2} 212.6163{col 28}{space 2} 16.64535{col 39}{space 1}   12.77{col 48}{space 3}0.000{col 56}{space 4} 179.9298{col 69}{space 3} 245.3028
+{txt}{space 8}TEXAS  {c |}{col 16}{res}{space 2}  56.0893{col 28}{space 2} 22.46083{col 39}{space 1}    2.50{col 48}{space 3}0.013{col 56}{space 4} 11.98294{col 69}{space 3} 100.1956
+{txt}{space 9}UTAH  {c |}{col 16}{res}{space 2}-96.89339{col 28}{space 2} 37.31486{col 39}{space 1}   -2.60{col 48}{space 3}0.010{col 56}{space 4}-170.1686{col 69}{space 3}-23.61815
+{txt}{space 6}VERMONT  {c |}{col 16}{res}{space 2}-102.8194{col 28}{space 2} 56.49053{col 39}{space 1}   -1.82{col 48}{space 3}0.069{col 56}{space 4}  -213.75{col 69}{space 3} 8.111062
+{txt}{space 5}VIRGINIA  {c |}{col 16}{res}{space 2}-14.23394{col 28}{space 2} 58.05272{col 39}{space 1}   -0.25{col 48}{space 3}0.806{col 56}{space 4}-128.2321{col 69}{space 3} 99.76424
+{txt}{space 3}WASHINGTON  {c |}{col 16}{res}{space 2} 20.71445{col 28}{space 2} 44.68663{col 39}{space 1}    0.46{col 48}{space 3}0.643{col 56}{space 4}-67.03673{col 69}{space 3} 108.4656
+{txt}{space 1}WESTVIRGINIA  {c |}{col 16}{res}{space 2}-232.2746{col 28}{space 2}  26.5861{col 39}{space 1}   -8.74{col 48}{space 3}0.000{col 56}{space 4}-284.4817{col 69}{space 3}-180.0674
+{txt}{space 4}WISCONSIN  {c |}{col 16}{res}{space 2}-99.71689{col 28}{space 2} 24.19553{col 39}{space 1}   -4.12{col 48}{space 3}0.000{col 56}{space 4}-147.2297{col 69}{space 3}-52.20411
+{txt}{space 6}WYOMING  {c |}{col 16}{res}{space 2}-200.9653{col 28}{space 2} 16.18891{col 39}{space 1}  -12.41{col 48}{space 3}0.000{col 56}{space 4}-232.7555{col 69}{space 3}-169.1751
+{txt}{space 14} {c |}
+{space 10}Year {c |}
+{space 9}2007  {c |}{col 16}{res}{space 2} 4.551969{col 28}{space 2} 13.04144{col 39}{space 1}    0.35{col 48}{space 3}0.727{col 56}{space 4}-21.05752{col 69}{space 3} 30.16146
+{txt}{space 9}2008  {c |}{col 16}{res}{space 2}-.1884477{col 28}{space 2} 12.36554{col 39}{space 1}   -0.02{col 48}{space 3}0.988{col 56}{space 4}-24.47067{col 69}{space 3} 24.09378
+{txt}{space 9}2009  {c |}{col 16}{res}{space 2}-13.10711{col 28}{space 2} 11.70624{col 39}{space 1}   -1.12{col 48}{space 3}0.263{col 56}{space 4}-36.09467{col 69}{space 3} 9.880457
+{txt}{space 9}2010  {c |}{col 16}{res}{space 2}-23.82693{col 28}{space 2} 11.56763{col 39}{space 1}   -2.06{col 48}{space 3}0.040{col 56}{space 4} -46.5423{col 69}{space 3}-1.111555
+{txt}{space 9}2011  {c |}{col 16}{res}{space 2}-30.09429{col 28}{space 2} 12.52093{col 39}{space 1}   -2.40{col 48}{space 3}0.017{col 56}{space 4}-54.68165{col 69}{space 3}-5.506922
+{txt}{space 9}2012  {c |}{col 16}{res}{space 2}-18.43176{col 28}{space 2} 14.10201{col 39}{space 1}   -1.31{col 48}{space 3}0.192{col 56}{space 4}-46.12389{col 69}{space 3} 9.260372
+{txt}{space 9}2013  {c |}{col 16}{res}{space 2}-15.23687{col 28}{space 2} 15.78696{col 39}{space 1}   -0.97{col 48}{space 3}0.335{col 56}{space 4}-46.23774{col 69}{space 3}   15.764
+{txt}{space 9}2014  {c |}{col 16}{res}{space 2}-11.16854{col 28}{space 2} 17.03927{col 39}{space 1}   -0.66{col 48}{space 3}0.512{col 56}{space 4}-44.62857{col 69}{space 3} 22.29149
+{txt}{space 9}2015  {c |}{col 16}{res}{space 2} 14.31447{col 28}{space 2} 19.29051{col 39}{space 1}    0.74{col 48}{space 3}0.458{col 56}{space 4}-23.56632{col 69}{space 3} 52.19526
+{txt}{space 9}2016  {c |}{col 16}{res}{space 2} 42.65085{col 28}{space 2} 22.29025{col 39}{space 1}    1.91{col 48}{space 3}0.056{col 56}{space 4}-1.120531{col 69}{space 3} 86.42223
+{txt}{space 9}2017  {c |}{col 16}{res}{space 2} 53.12684{col 28}{space 2} 25.94954{col 39}{space 1}    2.05{col 48}{space 3}0.041{col 56}{space 4} 2.169716{col 69}{space 3}  104.084
+{txt}{space 9}2018  {c |}{col 16}{res}{space 2} 50.08498{col 28}{space 2} 29.38874{col 39}{space 1}    1.70{col 48}{space 3}0.089{col 56}{space 4} -7.62572{col 69}{space 3} 107.7957
+{txt}{space 9}2019  {c |}{col 16}{res}{space 2} 60.12891{col 28}{space 2} 31.13569{col 39}{space 1}    1.93{col 48}{space 3}0.054{col 56}{space 4}-1.012282{col 69}{space 3} 121.2701
+{txt}{space 14} {c |}
+{space 9}_cons {c |}{col 16}{res}{space 2} 872.3395{col 28}{space 2} 94.41789{col 39}{space 1}    9.24{col 48}{space 3}0.000{col 56}{space 4}  686.931{col 69}{space 3} 1057.748
+{txt}{hline 15}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using FinalRegTable, word keep(Edu_Attainment) addtext(State FE, Y, Year FE, Y) cttop(DV)
+{txt}{stata `"shellout using `"FinalRegTable.rtf"'"':FinalRegTable.rtf}
+{browse `"D:\Econ108FinalData"' :dir}{com} : {txt}{stata `"seeout using "FinalRegTable.txt""':seeout}
+
+{com}. 
+. 
+. // Include interaction term for each state and year, and you will get a 100% accurate regression
+. reg ViolentCrimeRatePer100k Edu_Attainment i.StateNum##i.Year, robust
+{p 0 6 2}{txt}note: 50.StateNum#2019.Year omitted because of collinearity{p_end}
+
+Linear regression                               Number of obs     = {res}       700
+                                                {txt}{help j_robustsingular:F(0, 0) }          =  {res}        .
+                                                {txt}Prob > F          = {res}         .
+                                                {txt}R-squared         = {res}    1.0000
+                                                {txt}Root MSE          =    {res}      0
+
+{txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 21}{c |}{col 33}    Robust
+{col 1}ViolentCrimeRa~100k{col 21}{c |}      Coef.{col 33}   Std. Err.{col 45}      t{col 53}   P>|t|{col 61}     [95% Con{col 74}f. Interval]
+{hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}Edu_Attainment {c |}{col 21}{res}{space 2}-89.84762{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 19} {c |}
+{space 11}StateNum {c |}
+{space 12}ALASKA  {c |}{col 21}{res}{space 2} 783.8796{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}ARIZONA  {c |}{col 21}{res}{space 2} 471.4566{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}ARKANSAS  {c |}{col 21}{res}{space 2}-134.1562{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}CALIFORNIA  {c |}{col 21}{res}{space 2} 817.0092{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}COLORADO  {c |}{col 21}{res}{space 2} 1152.384{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}CONNECTICUT  {c |}{col 21}{res}{space 2} 987.6238{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}DELAWARE  {c |}{col 21}{res}{space 2} 786.4249{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}FLORIDA  {c |}{col 21}{res}{space 2} 664.0905{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}GEORGIA  {c |}{col 21}{res}{space 2} 539.9397{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 12}HAWAII  {c |}{col 21}{res}{space 2} 628.6617{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 13}IDAHO  {c |}{col 21}{res}{space 2}   19.616{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}ILLINOIS  {c |}{col 21}{res}{space 2}   817.17{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}INDIANA  {c |}{col 21}{res}{space 2}-56.51681{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}IOWA  {c |}{col 21}{res}{space 2} 118.8427{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 12}KANSAS  {c |}{col 21}{res}{space 2}   673.64{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}KENTUCKY  {c |}{col 21}{res}{space 2}-261.0498{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}LOUISIANA  {c |}{col 21}{res}{space 2} 200.6557{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 13}MAINE  {c |}{col 21}{res}{space 2} 112.5103{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}MARYLAND  {c |}{col 21}{res}{space 2} 1511.255{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MASSACHUSETTS  {c |}{col 21}{res}{space 2} 1450.347{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}MICHIGAN  {c |}{col 21}{res}{space 2} 442.6411{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}MINNESOTA  {c |}{col 21}{res}{space 2} 722.3729{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}MISSISSIPPI  {c |}{col 21}{res}{space 2} -333.287{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}MISSOURI  {c |}{col 21}{res}{space 2} 407.9075{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}MONTANA  {c |}{col 21}{res}{space 2} 394.5478{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}NEBRASKA  {c |}{col 21}{res}{space 2} 377.6655{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 12}NEVADA  {c |}{col 21}{res}{space 2} 289.4502{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWHAMPSHIRE  {c |}{col 21}{res}{space 2} 683.8308{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}NEWJERSEY  {c |}{col 21}{res}{space 2} 1031.443{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}NEWMEXICO  {c |}{col 21}{res}{space 2} 595.3191{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}NEWYORK  {c |}{col 21}{res}{space 2} 917.1368{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NORTHCAROLINA  {c |}{col 21}{res}{space 2} 382.8222{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NORTHDAKOTA  {c |}{col 21}{res}{space 2} 106.9294{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}OHIO  {c |}{col 21}{res}{space 2} 95.78209{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}OKLAHOMA  {c |}{col 21}{res}{space 2} 162.0058{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 12}OREGON  {c |}{col 21}{res}{space 2} 430.0769{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}PENNSYLVANIA  {c |}{col 21}{res}{space 2} 400.5102{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}RHODEISLAND  {c |}{col 21}{res}{space 2} 565.9805{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}SOUTHCAROLINA  {c |}{col 21}{res}{space 2} 483.9875{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}SOUTHDAKOTA  {c |}{col 21}{res}{space 2}  78.5676{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}TENNESSEE  {c |}{col 21}{res}{space 2} 388.8671{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 13}TEXAS  {c |}{col 21}{res}{space 2} 414.5407{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}UTAH  {c |}{col 21}{res}{space 2} 473.0019{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}VERMONT  {c |}{col 21}{res}{space 2} 726.5949{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 10}VIRGINIA  {c |}{col 21}{res}{space 2} 899.1877{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}WASHINGTON  {c |}{col 21}{res}{space 2} 765.1779{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WESTVIRGINIA  {c |}{col 21}{res}{space 2}-558.8002{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}WISCONSIN  {c |}{col 21}{res}{space 2}  218.194{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 11}WYOMING  {c |}{col 21}{res}{space 2}-41.87586{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 19} {c |}
+{space 15}Year {c |}
+{space 14}2007  {c |}{col 21}{res}{space 2} 49.69575{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2008  {c |}{col 21}{res}{space 2} 108.4621{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2009  {c |}{col 21}{res}{space 2} 105.4047{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2010  {c |}{col 21}{res}{space 2}  24.3977{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2011  {c |}{col 21}{res}{space 2} 102.6272{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2012  {c |}{col 21}{res}{space 2} 222.2963{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2013  {c |}{col 21}{res}{space 2} 221.2406{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2014  {c |}{col 21}{res}{space 2} 217.8082{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2015  {c |}{col 21}{res}{space 2} 325.6484{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2016  {c |}{col 21}{res}{space 2} 430.4819{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2017  {c |}{col 21}{res}{space 2}  494.238{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2018  {c |}{col 21}{res}{space 2} 489.7209{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 14}2019  {c |}{col 21}{res}{space 2} 552.7766{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 19} {c |}
+{space 6}StateNum#Year {c |}
+{space 7}ALASKA#2007  {c |}{col 21}{res}{space 2}-157.3868{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2008  {c |}{col 21}{res}{space 2}-108.6202{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2009  {c |}{col 21}{res}{space 2}-187.4121{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2010  {c |}{col 21}{res}{space 2} 16.25089{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2011  {c |}{col 21}{res}{space 2}-229.0957{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2012  {c |}{col 21}{res}{space 2} -208.283{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2013  {c |}{col 21}{res}{space 2}-169.9842{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2014  {c |}{col 21}{res}{space 2}-171.2003{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2015  {c |}{col 21}{res}{space 2}-31.88445{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2016  {c |}{col 21}{res}{space 2}-71.74061{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2017  {c |}{col 21}{res}{space 2}-182.5193{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2018  {c |}{col 21}{res}{space 2} 3.726747{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}ALASKA#2019  {c |}{col 21}{res}{space 2}-77.21573{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2007  {c |}{col 21}{res}{space 2}-86.28952{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2008  {c |}{col 21}{res}{space 2}-198.7209{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2009  {c |}{col 21}{res}{space 2}-189.5125{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2010  {c |}{col 21}{res}{space 2}-81.74039{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2011  {c |}{col 21}{res}{space 2}-99.28664{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2012  {c |}{col 21}{res}{space 2}-133.0229{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2013  {c |}{col 21}{res}{space 2}-135.4124{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2014  {c |}{col 21}{res}{space 2}-130.6447{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2015  {c |}{col 21}{res}{space 2}-219.1045{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2016  {c |}{col 21}{res}{space 2}-156.2684{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2017  {c |}{col 21}{res}{space 2}-137.1819{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2018  {c |}{col 21}{res}{space 2}-138.8318{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}ARIZONA#2019  {c |}{col 21}{res}{space 2}-176.5479{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2007  {c |}{col 21}{res}{space 2} 26.87822{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2008  {c |}{col 21}{res}{space 2}-102.7985{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2009  {c |}{col 21}{res}{space 2}-76.44413{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2010  {c |}{col 21}{res}{space 2} 46.09016{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2011  {c |}{col 21}{res}{space 2} 15.31787{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2012  {c |}{col 21}{res}{space 2}-53.24553{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2013  {c |}{col 21}{res}{space 2}-96.98361{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2014  {c |}{col 21}{res}{space 2}-1.790247{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2015  {c |}{col 21}{res}{space 2}-32.51981{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2016  {c |}{col 21}{res}{space 2}-53.90778{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2017  {c |}{col 21}{res}{space 2}-23.76558{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2018  {c |}{col 21}{res}{space 2}-39.51366{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ARKANSAS#2019  {c |}{col 21}{res}{space 2}-61.56709{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2007  {c |}{col 21}{res}{space 2}-14.63257{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2008  {c |}{col 21}{res}{space 2}-83.22771{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2009  {c |}{col 21}{res}{space 2}-84.99686{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2010  {c |}{col 21}{res}{space 2}-17.44149{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2011  {c |}{col 21}{res}{space 2}-107.1999{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2012  {c |}{col 21}{res}{space 2}-160.9652{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2013  {c |}{col 21}{res}{space 2} -171.916{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2014  {c |}{col 21}{res}{space 2}-111.5428{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2015  {c |}{col 21}{res}{space 2}-135.2841{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2016  {c |}{col 21}{res}{space 2}-167.1911{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2017  {c |}{col 21}{res}{space 2}-164.1221{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2018  {c |}{col 21}{res}{space 2}-107.5586{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}CALIFORNIA#2019  {c |}{col 21}{res}{space 2} -104.938{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2007  {c |}{col 21}{res}{space 2}-30.68809{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2008  {c |}{col 21}{res}{space 2}-40.22336{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2009  {c |}{col 21}{res}{space 2}-15.43807{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2010  {c |}{col 21}{res}{space 2} 93.43181{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2011  {c |}{col 21}{res}{space 2} 41.55058{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2012  {c |}{col 21}{res}{space 2}-17.54909{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2013  {c |}{col 21}{res}{space 2} 9.577932{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2014  {c |}{col 21}{res}{space 2} 59.02662{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2015  {c |}{col 21}{res}{space 2} 43.95655{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2016  {c |}{col 21}{res}{space 2} 23.64713{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2017  {c |}{col 21}{res}{space 2} 102.1388{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2018  {c |}{col 21}{res}{space 2} 180.7356{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}COLORADO#2019  {c |}{col 21}{res}{space 2} 191.2577{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2007  {c |}{col 21}{res}{space 2} 15.34023{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2008  {c |}{col 21}{res}{space 2} 79.27048{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2009  {c |}{col 21}{res}{space 2} 83.18815{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2010  {c |}{col 21}{res}{space 2} 137.9281{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2011  {c |}{col 21}{res}{space 2} 113.9734{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2012  {c |}{col 21}{res}{space 2} 85.38094{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2013  {c |}{col 21}{res}{space 2} 74.94855{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2014  {c |}{col 21}{res}{space 2} 124.6919{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2015  {c |}{col 21}{res}{space 2}  25.3348{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2016  {c |}{col 21}{res}{space 2}-43.88967{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2017  {c |}{col 21}{res}{space 2}-97.81502{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2018  {c |}{col 21}{res}{space 2}-32.96936{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}CONNECTICUT#2019  {c |}{col 21}{res}{space 2} -101.888{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2007  {c |}{col 21}{res}{space 2} -122.919{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2008  {c |}{col 21}{res}{space 2}-41.74176{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2009  {c |}{col 21}{res}{space 2} 2.405927{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2010  {c |}{col 21}{res}{space 2}-13.21566{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2011  {c |}{col 21}{res}{space 2}-63.01354{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2012  {c |}{col 21}{res}{space 2}-131.8607{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2013  {c |}{col 21}{res}{space 2}-159.8471{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2014  {c |}{col 21}{res}{space 2}-86.83189{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2015  {c |}{col 21}{res}{space 2}-157.8307{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2016  {c |}{col 21}{res}{space 2}-243.8684{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2017  {c |}{col 21}{res}{space 2}-318.1343{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2018  {c |}{col 21}{res}{space 2}-361.3353{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}DELAWARE#2019  {c |}{col 21}{res}{space 2}-254.7001{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2007  {c |}{col 21}{res}{space 2} 5.836637{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2008  {c |}{col 21}{res}{space 2}-86.60485{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2009  {c |}{col 21}{res}{space 2}-204.8989{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2010  {c |}{col 21}{res}{space 2}-149.0957{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2011  {c |}{col 21}{res}{space 2}-254.3994{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2012  {c |}{col 21}{res}{space 2}-312.4432{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2013  {c |}{col 21}{res}{space 2}-292.0546{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2014  {c |}{col 21}{res}{space 2}-209.5967{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2015  {c |}{col 21}{res}{space 2}-297.2277{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2016  {c |}{col 21}{res}{space 2}-415.6344{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2017  {c |}{col 21}{res}{space 2}-402.8396{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2018  {c |}{col 21}{res}{space 2}-358.5755{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}FLORIDA#2019  {c |}{col 21}{res}{space 2}  -401.18{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2007  {c |}{col 21}{res}{space 2}  17.4115{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2008  {c |}{col 21}{res}{space 2}-19.72951{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2009  {c |}{col 21}{res}{space 2}-69.48454{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2010  {c |}{col 21}{res}{space 2}-29.20649{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2011  {c |}{col 21}{res}{space 2}-110.5621{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2012  {c |}{col 21}{res}{space 2}-170.6161{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2013  {c |}{col 21}{res}{space 2}-173.8228{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2014  {c |}{col 21}{res}{space 2}-86.91147{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2015  {c |}{col 21}{res}{space 2}-121.8691{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2016  {c |}{col 21}{res}{space 2} -153.535{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2017  {c |}{col 21}{res}{space 2} -221.672{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2018  {c |}{col 21}{res}{space 2}-157.9634{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}GEORGIA#2019  {c |}{col 21}{res}{space 2}-153.0288{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2007  {c |}{col 21}{res}{space 2}  -103.04{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2008  {c |}{col 21}{res}{space 2}-170.9558{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2009  {c |}{col 21}{res}{space 2}-120.8149{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2010  {c |}{col 21}{res}{space 2}-60.84523{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2011  {c |}{col 21}{res}{space 2}  -150.51{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2012  {c |}{col 21}{res}{space 2}-228.4009{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2013  {c |}{col 21}{res}{space 2}-116.0546{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2014  {c |}{col 21}{res}{space 2}-122.9852{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2015  {c |}{col 21}{res}{space 2}-160.6741{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2016  {c |}{col 21}{res}{space 2} -204.838{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2017  {c |}{col 21}{res}{space 2}-237.3683{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2018  {c |}{col 21}{res}{space 2}-180.8675{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}HAWAII#2019  {c |}{col 21}{res}{space 2}-198.1071{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2007  {c |}{col 21}{res}{space 2} 50.29041{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2008  {c |}{col 21}{res}{space 2}-64.19097{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2009  {c |}{col 21}{res}{space 2}-70.32863{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2010  {c |}{col 21}{res}{space 2} 48.28267{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2011  {c |}{col 21}{res}{space 2} 21.77539{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2012  {c |}{col 21}{res}{space 2}-63.89449{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2013  {c |}{col 21}{res}{space 2} 9.103675{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2014  {c |}{col 21}{res}{space 2}-100.0806{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2015  {c |}{col 21}{res}{space 2}-114.6547{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2016  {c |}{col 21}{res}{space 2}-61.04635{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2017  {c |}{col 21}{res}{space 2}-200.5154{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2018  {c |}{col 21}{res}{space 2}-114.5304{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}IDAHO#2019  {c |}{col 21}{res}{space 2}-90.96185{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2007  {c |}{col 21}{res}{space 2}-4.201466{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2008  {c |}{col 21}{res}{space 2} -34.8522{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2009  {c |}{col 21}{res}{space 2} 2.892854{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2010  {c |}{col 21}{res}{space 2} 39.88191{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2011  {c |}{col 21}{res}{space 2}-26.25317{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2012  {c |}{col 21}{res}{space 2}-106.5358{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2013  {c |}{col 21}{res}{space 2}-95.15866{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2014  {c |}{col 21}{res}{space 2}-38.96516{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2015  {c |}{col 21}{res}{space 2} -124.079{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2016  {c |}{col 21}{res}{space 2}-77.55253{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2017  {c |}{col 21}{res}{space 2}-102.8396{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2018  {c |}{col 21}{res}{space 2}-70.14016{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}ILLINOIS#2019  {c |}{col 21}{res}{space 2}-67.53347{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2007  {c |}{col 21}{res}{space 2} 4.981388{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2008  {c |}{col 21}{res}{space 2} 18.29572{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2009  {c |}{col 21}{res}{space 2}  -15.109{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2010  {c |}{col 21}{res}{space 2} 65.09402{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2011  {c |}{col 21}{res}{space 2} 31.20204{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2012  {c |}{col 21}{res}{space 2}-38.63458{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2013  {c |}{col 21}{res}{space 2}  10.0625{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2014  {c |}{col 21}{res}{space 2} 102.2287{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2015  {c |}{col 21}{res}{space 2} 34.57382{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2016  {c |}{col 21}{res}{space 2} 9.822944{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2017  {c |}{col 21}{res}{space 2} 48.12939{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2018  {c |}{col 21}{res}{space 2} 62.90919{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}INDIANA#2019  {c |}{col 21}{res}{space 2}-29.54189{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2007  {c |}{col 21}{res}{space 2}-11.59374{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2008  {c |}{col 21}{res}{space 2}-81.27597{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2009  {c |}{col 21}{res}{space 2}-10.92982{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2010  {c |}{col 21}{res}{space 2} 46.47872{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2011  {c |}{col 21}{res}{space 2} 31.13087{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2012  {c |}{col 21}{res}{space 2}-35.29855{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2013  {c |}{col 21}{res}{space 2}-17.71296{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2014  {c |}{col 21}{res}{space 2} 104.5697{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2015  {c |}{col 21}{res}{space 2}-71.54873{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2016  {c |}{col 21}{res}{space 2}-28.06027{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2017  {c |}{col 21}{res}{space 2} -44.0957{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2018  {c |}{col 21}{res}{space 2}-73.92567{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}IOWA#2019  {c |}{col 21}{res}{space 2}-93.55558{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2007  {c |}{col 21}{res}{space 2}-4.084677{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2008  {c |}{col 21}{res}{space 2}-33.05922{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2009  {c |}{col 21}{res}{space 2}-49.45962{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2010  {c |}{col 21}{res}{space 2} 27.49975{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2011  {c |}{col 21}{res}{space 2}-38.95642{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2012  {c |}{col 21}{res}{space 2}-131.0444{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2013  {c |}{col 21}{res}{space 2}-81.69639{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2014  {c |}{col 21}{res}{space 2}-33.68909{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2015  {c |}{col 21}{res}{space 2}-82.22784{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2016  {c |}{col 21}{res}{space 2}-97.72342{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2017  {c |}{col 21}{res}{space 2}-48.08087{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2018  {c |}{col 21}{res}{space 2}-8.520961{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}KANSAS#2019  {c |}{col 21}{res}{space 2}-81.82047{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2007  {c |}{col 21}{res}{space 2}-17.70476{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2008  {c |}{col 21}{res}{space 2}-102.2292{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2009  {c |}{col 21}{res}{space 2}-19.91878{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2010  {c |}{col 21}{res}{space 2} .1177616{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2011  {c |}{col 21}{res}{space 2}-28.66052{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2012  {c |}{col 21}{res}{space 2}-100.9677{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2013  {c |}{col 21}{res}{space 2}-40.84585{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2014  {c |}{col 21}{res}{space 2} -71.5423{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2015  {c |}{col 21}{res}{space 2} -73.5135{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2016  {c |}{col 21}{res}{space 2}-155.7039{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2017  {c |}{col 21}{res}{space 2}-172.1069{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2018  {c |}{col 21}{res}{space 2}-109.6112{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}KENTUCKY#2019  {c |}{col 21}{res}{space 2}-140.4405{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2007  {c |}{col 21}{res}{space 2}-9.031409{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2008  {c |}{col 21}{res}{space 2}-150.0297{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2009  {c |}{col 21}{res}{space 2}-84.38959{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2010  {c |}{col 21}{res}{space 2}-74.38974{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2011  {c |}{col 21}{res}{space 2}-173.1824{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2012  {c |}{col 21}{res}{space 2}-270.4051{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2013  {c |}{col 21}{res}{space 2}-202.8311{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2014  {c |}{col 21}{res}{space 2}-167.2344{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2015  {c |}{col 21}{res}{space 2}-223.1637{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2016  {c |}{col 21}{res}{space 2}-283.6494{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2017  {c |}{col 21}{res}{space 2}-320.5413{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2018  {c |}{col 21}{res}{space 2}-290.5713{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}LOUISIANA#2019  {c |}{col 21}{res}{space 2}-278.9432{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2007  {c |}{col 21}{res}{space 2} 33.67564{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2008  {c |}{col 21}{res}{space 2}-142.3571{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2009  {c |}{col 21}{res}{space 2}-2.265305{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2010  {c |}{col 21}{res}{space 2} 72.01163{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2011  {c |}{col 21}{res}{space 2} 138.6836{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2012  {c |}{col 21}{res}{space 2}-17.39383{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2013  {c |}{col 21}{res}{space 2} 8.263416{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2014  {c |}{col 21}{res}{space 2} 117.9859{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2015  {c |}{col 21}{res}{space 2} 75.29372{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2016  {c |}{col 21}{res}{space 2}-35.83338{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2017  {c |}{col 21}{res}{space 2} 77.37503{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2018  {c |}{col 21}{res}{space 2} 19.09069{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}MAINE#2019  {c |}{col 21}{res}{space 2} 111.7878{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2007  {c |}{col 21}{res}{space 2}-77.47911{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2008  {c |}{col 21}{res}{space 2}-149.8585{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2009  {c |}{col 21}{res}{space 2}-140.1948{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2010  {c |}{col 21}{res}{space 2}-65.51015{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2011  {c |}{col 21}{res}{space 2}-125.4412{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2012  {c |}{col 21}{res}{space 2}-262.4446{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2013  {c |}{col 21}{res}{space 2}-219.4499{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2014  {c |}{col 21}{res}{space 2}-171.8062{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2015  {c |}{col 21}{res}{space 2}-214.6298{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2016  {c |}{col 21}{res}{space 2}-259.7124{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2017  {c |}{col 21}{res}{space 2}-259.3686{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2018  {c |}{col 21}{res}{space 2} -187.556{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MARYLAND#2019  {c |}{col 21}{res}{space 2}-256.1478{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2007  {c |}{col 21}{res}{space 2} 15.67577{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2008  {c |}{col 21}{res}{space 2}-7.670163{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2009  {c |}{col 21}{res}{space 2} 12.45101{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2010  {c |}{col 21}{res}{space 2} 174.9129{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2011  {c |}{col 21}{res}{space 2} 67.41078{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2012  {c |}{col 21}{res}{space 2}  -57.115{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2013  {c |}{col 21}{res}{space 2} 41.62803{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2014  {c |}{col 21}{res}{space 2} 103.9028{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2015  {c |}{col 21}{res}{space 2} 22.59263{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2016  {c |}{col 21}{res}{space 2}  11.5879{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2017  {c |}{col 21}{res}{space 2}-8.197864{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2018  {c |}{col 21}{res}{space 2} 75.23676{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}MASSACHUSETTS#2019  {c |}{col 21}{res}{space 2} 46.56605{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2007  {c |}{col 21}{res}{space 2}-58.09713{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2008  {c |}{col 21}{res}{space 2}-151.4052{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2009  {c |}{col 21}{res}{space 2}-161.8465{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2010  {c |}{col 21}{res}{space 2} -33.6002{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2011  {c |}{col 21}{res}{space 2}-120.8519{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2012  {c |}{col 21}{res}{space 2}-195.4044{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2013  {c |}{col 21}{res}{space 2}-118.0811{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2014  {c |}{col 21}{res}{space 2}-92.31986{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2015  {c |}{col 21}{res}{space 2}-176.0251{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2016  {c |}{col 21}{res}{space 2}-192.4509{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2017  {c |}{col 21}{res}{space 2}-193.3841{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2018  {c |}{col 21}{res}{space 2}-144.5355{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MICHIGAN#2019  {c |}{col 21}{res}{space 2}-183.5808{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2007  {c |}{col 21}{res}{space 2}-19.16772{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2008  {c |}{col 21}{res}{space 2}-58.90359{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2009  {c |}{col 21}{res}{space 2}-74.74774{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2010  {c |}{col 21}{res}{space 2} 25.31447{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2011  {c |}{col 21}{res}{space 2}-13.72323{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2012  {c |}{col 21}{res}{space 2}-51.88146{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2013  {c |}{col 21}{res}{space 2}-20.35161{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2014  {c |}{col 21}{res}{space 2} 49.71366{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2015  {c |}{col 21}{res}{space 2}-8.712776{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2016  {c |}{col 21}{res}{space 2}-104.5372{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2017  {c |}{col 21}{res}{space 2}-55.80343{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2018  {c |}{col 21}{res}{space 2}-15.27774{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}MINNESOTA#2019  {c |}{col 21}{res}{space 2}-8.461461{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2007  {c |}{col 21}{res}{space 2}-48.02978{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2008  {c |}{col 21}{res}{space 2}-68.22809{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2009  {c |}{col 21}{res}{space 2}-50.82978{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2010  {c |}{col 21}{res}{space 2}  9.59799{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2011  {c |}{col 21}{res}{space 2} -41.5848{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2012  {c |}{col 21}{res}{space 2}-89.34626{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2013  {c |}{col 21}{res}{space 2}-101.4839{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2014  {c |}{col 21}{res}{space 2}-31.28006{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2015  {c |}{col 21}{res}{space 2}-168.7192{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2016  {c |}{col 21}{res}{space 2} -179.056{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2017  {c |}{col 21}{res}{space 2}-228.6004{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2018  {c |}{col 21}{res}{space 2}-158.6435{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}MISSISSIPPI#2019  {c |}{col 21}{res}{space 2}-258.9712{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2007  {c |}{col 21}{res}{space 2}-72.43113{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2008  {c |}{col 21}{res}{space 2}-86.79111{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2009  {c |}{col 21}{res}{space 2}-78.42751{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2010  {c |}{col 21}{res}{space 2} 1.807048{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2011  {c |}{col 21}{res}{space 2}-39.18529{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2012  {c |}{col 21}{res}{space 2}-128.3225{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2013  {c |}{col 21}{res}{space 2}-90.86306{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2014  {c |}{col 21}{res}{space 2}-33.02671{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2015  {c |}{col 21}{res}{space 2}-59.40525{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2016  {c |}{col 21}{res}{space 2}-79.40877{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2017  {c |}{col 21}{res}{space 2} -78.3073{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2018  {c |}{col 21}{res}{space 2}-66.09777{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}MISSOURI#2019  {c |}{col 21}{res}{space 2}-73.31696{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2007  {c |}{col 21}{res}{space 2}-51.86879{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2008  {c |}{col 21}{res}{space 2}-131.0622{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2009  {c |}{col 21}{res}{space 2}-105.5104{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2010  {c |}{col 21}{res}{space 2} 119.8204{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2011  {c |}{col 21}{res}{space 2}-17.01696{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2012  {c |}{col 21}{res}{space 2} -24.1501{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2013  {c |}{col 21}{res}{space 2}-78.36867{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2014  {c |}{col 21}{res}{space 2} 22.82093{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2015  {c |}{col 21}{res}{space 2} 57.69602{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2016  {c |}{col 21}{res}{space 2} 7.558168{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2017  {c |}{col 21}{res}{space 2} 69.32682{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2018  {c |}{col 21}{res}{space 2} 16.96647{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}MONTANA#2019  {c |}{col 21}{res}{space 2} 155.4775{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2007  {c |}{col 21}{res}{space 2} 24.86098{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2008  {c |}{col 21}{res}{space 2}-68.59961{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2009  {c |}{col 21}{res}{space 2}-60.68755{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2010  {c |}{col 21}{res}{space 2}  126.018{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2011  {c |}{col 21}{res}{space 2}-41.40147{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2012  {c |}{col 21}{res}{space 2}-55.96608{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2013  {c |}{col 21}{res}{space 2}  -16.333{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2014  {c |}{col 21}{res}{space 2} 14.36547{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2015  {c |}{col 21}{res}{space 2}-36.07541{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2016  {c |}{col 21}{res}{space 2}-16.94342{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2017  {c |}{col 21}{res}{space 2}-38.88721{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2018  {c |}{col 21}{res}{space 2} 7.421121{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}NEBRASKA#2019  {c |}{col 21}{res}{space 2}  32.3912{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2007  {c |}{col 21}{res}{space 2} 49.15395{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2008  {c |}{col 21}{res}{space 2}-26.82264{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2009  {c |}{col 21}{res}{space 2}-55.03154{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2010  {c |}{col 21}{res}{space 2}-24.53825{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2011  {c |}{col 21}{res}{space 2}-129.3883{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2012  {c |}{col 21}{res}{space 2}-212.5961{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2013  {c |}{col 21}{res}{space 2}-207.1646{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2014  {c |}{col 21}{res}{space 2} -117.216{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2015  {c |}{col 21}{res}{space 2}-119.8003{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2016  {c |}{col 21}{res}{space 2}-251.4578{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2017  {c |}{col 21}{res}{space 2} -311.579{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2018  {c |}{col 21}{res}{space 2}-321.8622{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}NEVADA#2019  {c |}{col 21}{res}{space 2}-360.3635{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2007  {c |}{col 21}{res}{space 2} 2.822501{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2008  {c |}{col 21}{res}{space 2}  35.8479{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2009  {c |}{col 21}{res}{space 2}-75.53987{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2010  {c |}{col 21}{res}{space 2}  84.7085{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2011  {c |}{col 21}{res}{space 2} 81.41041{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2012  {c |}{col 21}{res}{space 2} 69.42629{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2013  {c |}{col 21}{res}{space 2} 97.89895{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2014  {c |}{col 21}{res}{space 2} 118.1102{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2015  {c |}{col 21}{res}{space 2} 76.36165{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2016  {c |}{col 21}{res}{space 2} 50.64203{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2017  {c |}{col 21}{res}{space 2} 14.97188{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2018  {c |}{col 21}{res}{space 2}-15.01424{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}NEWHAMPSHIRE#2019  {c |}{col 21}{res}{space 2}-26.83106{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2007  {c |}{col 21}{res}{space 2}-27.05119{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2008  {c |}{col 21}{res}{space 2}-43.64946{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2009  {c |}{col 21}{res}{space 2}-46.67301{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2010  {c |}{col 21}{res}{space 2} 111.4649{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2011  {c |}{col 21}{res}{space 2} 24.90767{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2012  {c |}{col 21}{res}{space 2}-32.06018{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2013  {c |}{col 21}{res}{space 2} 3.205888{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2014  {c |}{col 21}{res}{space 2} 51.21729{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2015  {c |}{col 21}{res}{space 2}-44.44504{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2016  {c |}{col 21}{res}{space 2}  -69.833{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2017  {c |}{col 21}{res}{space 2}-50.96738{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2018  {c |}{col 21}{res}{space 2} 31.67394{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWJERSEY#2019  {c |}{col 21}{res}{space 2} 3.350207{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2007  {c |}{col 21}{res}{space 2}-73.57869{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2008  {c |}{col 21}{res}{space 2}-155.6883{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2009  {c |}{col 21}{res}{space 2}-129.5989{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2010  {c |}{col 21}{res}{space 2}-105.6775{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2011  {c |}{col 21}{res}{space 2}-151.3557{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2012  {c |}{col 21}{res}{space 2}-234.5309{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2013  {c |}{col 21}{res}{space 2} -152.648{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2014  {c |}{col 21}{res}{space 2}-164.7867{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2015  {c |}{col 21}{res}{space 2}-204.9035{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2016  {c |}{col 21}{res}{space 2}-200.4787{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2017  {c |}{col 21}{res}{space 2}-192.2625{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2018  {c |}{col 21}{res}{space 2}-60.70839{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}NEWMEXICO#2019  {c |}{col 21}{res}{space 2}-148.1343{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2007  {c |}{col 21}{res}{space 2}-25.57352{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2008  {c |}{col 21}{res}{space 2}-82.41659{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2009  {c |}{col 21}{res}{space 2}-47.80506{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2010  {c |}{col 21}{res}{space 2} 49.56312{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2011  {c |}{col 21}{res}{space 2} 13.29123{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2012  {c |}{col 21}{res}{space 2}-52.75855{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2013  {c |}{col 21}{res}{space 2}-1.872067{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2014  {c |}{col 21}{res}{space 2} 25.60628{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2015  {c |}{col 21}{res}{space 2}-39.44317{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2016  {c |}{col 21}{res}{space 2}-84.86896{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2017  {c |}{col 21}{res}{space 2}-141.2062{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2018  {c |}{col 21}{res}{space 2}-35.05508{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}NEWYORK#2019  {c |}{col 21}{res}{space 2}-36.08183{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2007  {c |}{col 21}{res}{space 2} 12.96941{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2008  {c |}{col 21}{res}{space 2} .0408111{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2009  {c |}{col 21}{res}{space 2} -23.9693{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2010  {c |}{col 21}{res}{space 2} 16.12651{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2011  {c |}{col 21}{res}{space 2}-39.81735{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2012  {c |}{col 21}{res}{space 2}-110.9185{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2013  {c |}{col 21}{res}{space 2}-31.21755{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2014  {c |}{col 21}{res}{space 2}-13.51378{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2015  {c |}{col 21}{res}{space 2}-40.94251{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2016  {c |}{col 21}{res}{space 2}-30.73687{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2017  {c |}{col 21}{res}{space 2}-22.16037{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2018  {c |}{col 21}{res}{space 2}  50.1834{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}NORTHCAROLINA#2019  {c |}{col 21}{res}{space 2} 17.25564{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2007  {c |}{col 21}{res}{space 2}-26.16075{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2008  {c |}{col 21}{res}{space 2} 46.97258{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2009  {c |}{col 21}{res}{space 2}-14.62547{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2010  {c |}{col 21}{res}{space 2} 252.3916{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2011  {c |}{col 21}{res}{space 2}  79.3636{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2012  {c |}{col 21}{res}{space 2} 101.1977{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2013  {c |}{col 21}{res}{space 2} 55.78992{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2014  {c |}{col 21}{res}{space 2} 81.11102{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2015  {c |}{col 21}{res}{space 2} 100.3504{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2016  {c |}{col 21}{res}{space 2} 52.12295{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2017  {c |}{col 21}{res}{space 2} 117.4385{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2018  {c |}{col 21}{res}{space 2}  31.4269{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}NORTHDAKOTA#2019  {c |}{col 21}{res}{space 2} 35.25755{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2007  {c |}{col 21}{res}{space 2} 42.07149{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2008  {c |}{col 21}{res}{space 2}-11.71655{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2009  {c |}{col 21}{res}{space 2}-24.79551{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2010  {c |}{col 21}{res}{space 2} 84.27051{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2011  {c |}{col 21}{res}{space 2} 7.155445{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2012  {c |}{col 21}{res}{space 2}-75.27139{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2013  {c |}{col 21}{res}{space 2}-6.780179{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2014  {c |}{col 21}{res}{space 2} 40.21453{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2015  {c |}{col 21}{res}{space 2}-42.65451{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2016  {c |}{col 21}{res}{space 2}-76.18937{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2017  {c |}{col 21}{res}{space 2}  -97.825{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2018  {c |}{col 21}{res}{space 2}-21.01224{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}OHIO#2019  {c |}{col 21}{res}{space 2} -43.8795{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2007  {c |}{col 21}{res}{space 2} 15.39454{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2008  {c |}{col 21}{res}{space 2}-70.18601{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2009  {c |}{col 21}{res}{space 2}-47.84513{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2010  {c |}{col 21}{res}{space 2}   29.561{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2011  {c |}{col 21}{res}{space 2} 7.493252{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2012  {c |}{col 21}{res}{space 2}-97.68029{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2013  {c |}{col 21}{res}{space 2} -124.692{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2014  {c |}{col 21}{res}{space 2} -120.551{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2015  {c |}{col 21}{res}{space 2}-176.4254{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2016  {c |}{col 21}{res}{space 2}-199.5588{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2017  {c |}{col 21}{res}{space 2}-229.9205{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2018  {c |}{col 21}{res}{space 2} -206.521{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}OKLAHOMA#2019  {c |}{col 21}{res}{space 2}-250.0064{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2007  {c |}{col 21}{res}{space 2} 29.47026{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2008  {c |}{col 21}{res}{space 2}-77.67478{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2009  {c |}{col 21}{res}{space 2} 21.74368{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2010  {c |}{col 21}{res}{space 2} 64.12838{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2011  {c |}{col 21}{res}{space 2} 26.38593{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2012  {c |}{col 21}{res}{space 2} -39.4021{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2013  {c |}{col 21}{res}{space 2}  40.0195{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2014  {c |}{col 21}{res}{space 2} 30.72363{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2015  {c |}{col 21}{res}{space 2} 76.15931{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2016  {c |}{col 21}{res}{space 2} 20.99982{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2017  {c |}{col 21}{res}{space 2} 64.31508{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2018  {c |}{col 21}{res}{space 2} 99.53086{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 7}OREGON#2019  {c |}{col 21}{res}{space 2} 80.25702{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2007  {c |}{col 21}{res}{space 2}-36.66868{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2008  {c |}{col 21}{res}{space 2}-57.02221{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2009  {c |}{col 21}{res}{space 2}-74.43376{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2010  {c |}{col 21}{res}{space 2}  55.1193{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2011  {c |}{col 21}{res}{space 2} -43.2567{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2012  {c |}{col 21}{res}{space 2}-97.39641{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2013  {c |}{col 21}{res}{space 2}-28.70634{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2014  {c |}{col 21}{res}{space 2}-19.66894{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2015  {c |}{col 21}{res}{space 2}-63.62412{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2016  {c |}{col 21}{res}{space 2}-68.33004{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2017  {c |}{col 21}{res}{space 2}-81.25759{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2018  {c |}{col 21}{res}{space 2}-48.08472{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}PENNSYLVANIA#2019  {c |}{col 21}{res}{space 2}-65.81422{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2007  {c |}{col 21}{res}{space 2}-31.98651{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2008  {c |}{col 21}{res}{space 2}-50.60877{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2009  {c |}{col 21}{res}{space 2} .5020853{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2010  {c |}{col 21}{res}{space 2} 58.60407{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2011  {c |}{col 21}{res}{space 2} 52.12932{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2012  {c |}{col 21}{res}{space 2}-35.68217{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2013  {c |}{col 21}{res}{space 2}  60.0641{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2014  {c |}{col 21}{res}{space 2}-154.2419{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2015  {c |}{col 21}{res}{space 2}-32.09311{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2016  {c |}{col 21}{res}{space 2}-14.76639{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2017  {c |}{col 21}{res}{space 2}-139.1952{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2018  {c |}{col 21}{res}{space 2}-66.82985{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}RHODEISLAND#2019  {c |}{col 21}{res}{space 2}-92.00986{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2007  {c |}{col 21}{res}{space 2}  45.0099{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2008  {c |}{col 21}{res}{space 2}-54.34524{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2009  {c |}{col 21}{res}{space 2}-56.33942{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2010  {c |}{col 21}{res}{space 2}-30.39757{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2011  {c |}{col 21}{res}{space 2}-170.4247{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2012  {c |}{col 21}{res}{space 2}-213.3175{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2013  {c |}{col 21}{res}{space 2}-172.7748{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2014  {c |}{col 21}{res}{space 2}-162.1146{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2015  {c |}{col 21}{res}{space 2}-218.2679{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2016  {c |}{col 21}{res}{space 2}-289.8185{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2017  {c |}{col 21}{res}{space 2}-277.3457{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2018  {c |}{col 21}{res}{space 2}-263.7629{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}SOUTHCAROLINA#2019  {c |}{col 21}{res}{space 2}-187.0473{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2007  {c |}{col 21}{res}{space 2}-33.92385{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2008  {c |}{col 21}{res}{space 2}-51.43716{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2009  {c |}{col 21}{res}{space 2}-64.19692{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2010  {c |}{col 21}{res}{space 2} 207.4915{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2011  {c |}{col 21}{res}{space 2} 114.8719{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2012  {c |}{col 21}{res}{space 2} 62.93385{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2013  {c |}{col 21}{res}{space 2} 85.60768{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2014  {c |}{col 21}{res}{space 2} 206.9064{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2015  {c |}{col 21}{res}{space 2} 128.6908{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2016  {c |}{col 21}{res}{space 2} 184.9132{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2017  {c |}{col 21}{res}{space 2} 64.50068{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2018  {c |}{col 21}{res}{space 2} 138.8895{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 2}SOUTHDAKOTA#2019  {c |}{col 21}{res}{space 2} 115.1273{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2007  {c |}{col 21}{res}{space 2}-47.58799{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2008  {c |}{col 21}{res}{space 2}-38.43487{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2009  {c |}{col 21}{res}{space 2}-81.08862{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2010  {c |}{col 21}{res}{space 2}-45.50603{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2011  {c |}{col 21}{res}{space 2}-83.93566{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2012  {c |}{col 21}{res}{space 2}-105.3297{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2013  {c |}{col 21}{res}{space 2}-112.3324{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2014  {c |}{col 21}{res}{space 2}-46.13046{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2015  {c |}{col 21}{res}{space 2}-114.3647{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2016  {c |}{col 21}{res}{space 2}-162.4288{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2017  {c |}{col 21}{res}{space 2}-99.78619{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2018  {c |}{col 21}{res}{space 2}-105.0836{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}TENNESSEE#2019  {c |}{col 21}{res}{space 2}-88.84716{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2007  {c |}{col 21}{res}{space 2}-10.51044{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2008  {c |}{col 21}{res}{space 2}-62.95468{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2009  {c |}{col 21}{res}{space 2}-58.91059{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2010  {c |}{col 21}{res}{space 2} 17.39046{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2011  {c |}{col 21}{res}{space 2}-57.74879{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2012  {c |}{col 21}{res}{space 2}-150.3395{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2013  {c |}{col 21}{res}{space 2}-77.66043{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2014  {c |}{col 21}{res}{space 2} -49.7276{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2015  {c |}{col 21}{res}{space 2}-97.34582{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2016  {c |}{col 21}{res}{space 2}-135.0283{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2017  {c |}{col 21}{res}{space 2}-131.3835{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2018  {c |}{col 21}{res}{space 2}-92.03627{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 8}TEXAS#2019  {c |}{col 21}{res}{space 2}-102.1019{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2007  {c |}{col 21}{res}{space 2}-30.34428{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2008  {c |}{col 21}{res}{space 2}-66.10258{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2009  {c |}{col 21}{res}{space 2}-126.0324{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2010  {c |}{col 21}{res}{space 2} 26.81686{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2011  {c |}{col 21}{res}{space 2}-33.16661{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2012  {c |}{col 21}{res}{space 2}-52.20928{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2013  {c |}{col 21}{res}{space 2} 20.96302{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2014  {c |}{col 21}{res}{space 2}-1.938245{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2015  {c |}{col 21}{res}{space 2}-26.50155{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2016  {c |}{col 21}{res}{space 2}-52.72245{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2017  {c |}{col 21}{res}{space 2} 59.35215{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2018  {c |}{col 21}{res}{space 2} 85.01557{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 9}UTAH#2019  {c |}{col 21}{res}{space 2} 15.48463{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2007  {c |}{col 21}{res}{space 2} 45.82759{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2008  {c |}{col 21}{res}{space 2}-136.1243{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2009  {c |}{col 21}{res}{space 2}-47.66877{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2010  {c |}{col 21}{res}{space 2} 77.10643{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2011  {c |}{col 21}{res}{space 2} 165.5675{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2012  {c |}{col 21}{res}{space 2} 89.27622{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2013  {c |}{col 21}{res}{space 2}  59.8221{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2014  {c |}{col 21}{res}{space 2}-30.47582{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2015  {c |}{col 21}{res}{space 2} 60.15051{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2016  {c |}{col 21}{res}{space 2}-49.30717{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2017  {c |}{col 21}{res}{space 2} 65.10066{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2018  {c |}{col 21}{res}{space 2} 111.7231{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}VERMONT#2019  {c |}{col 21}{res}{space 2} 78.95196{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2007  {c |}{col 21}{res}{space 2}  18.6504{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2008  {c |}{col 21}{res}{space 2}-44.90005{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2009  {c |}{col 21}{res}{space 2}-43.98361{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2010  {c |}{col 21}{res}{space 2} 41.73675{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2011  {c |}{col 21}{res}{space 2} 27.47266{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2012  {c |}{col 21}{res}{space 2}-62.78757{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2013  {c |}{col 21}{res}{space 2}-1.778965{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2014  {c |}{col 21}{res}{space 2} 55.63106{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2015  {c |}{col 21}{res}{space 2} -25.8785{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2016  {c |}{col 21}{res}{space 2}  -9.9268{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2017  {c |}{col 21}{res}{space 2}-29.17986{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2018  {c |}{col 21}{res}{space 2} 21.03672{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 5}VIRGINIA#2019  {c |}{col 21}{res}{space 2}-7.035474{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2007  {c |}{col 21}{res}{space 2} -80.4223{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2008  {c |}{col 21}{res}{space 2}-105.1451{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2009  {c |}{col 21}{res}{space 2}-75.37025{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2010  {c |}{col 21}{res}{space 2}-2.550222{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2011  {c |}{col 21}{res}{space 2}-28.09687{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2012  {c |}{col 21}{res}{space 2} -164.754{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2013  {c |}{col 21}{res}{space 2}-80.34701{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2014  {c |}{col 21}{res}{space 2}-44.90576{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2015  {c |}{col 21}{res}{space 2}-54.64304{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2016  {c |}{col 21}{res}{space 2}-60.85327{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2017  {c |}{col 21}{res}{space 2}-86.38552{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2018  {c |}{col 21}{res}{space 2} 32.96417{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 3}WASHINGTON#2019  {c |}{col 21}{res}{space 2}-20.76079{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2007  {c |}{col 21}{res}{space 2} 17.65712{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2008  {c |}{col 21}{res}{space 2}-60.49496{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2009  {c |}{col 21}{res}{space 2}-16.74741{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2010  {c |}{col 21}{res}{space 2} 100.3352{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2011  {c |}{col 21}{res}{space 2} 113.2223{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2012  {c |}{col 21}{res}{space 2} 2.960712{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2013  {c |}{col 21}{res}{space 2} 14.92746{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2014  {c |}{col 21}{res}{space 2} 47.04058{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2015  {c |}{col 21}{res}{space 2} 11.02184{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2016  {c |}{col 21}{res}{space 2} 34.21257{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2017  {c |}{col 21}{res}{space 2}-90.85402{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2018  {c |}{col 21}{res}{space 2}-48.24351{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 1}WESTVIRGINIA#2019  {c |}{col 21}{res}{space 2}-102.6147{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2007  {c |}{col 21}{res}{space 2}-15.87207{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2008  {c |}{col 21}{res}{space 2}-64.59238{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2009  {c |}{col 21}{res}{space 2}-78.53744{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2010  {c |}{col 21}{res}{space 2} 48.04706{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2011  {c |}{col 21}{res}{space 2} -23.9715{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2012  {c |}{col 21}{res}{space 2}-46.12113{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2013  {c |}{col 21}{res}{space 2} 6.252687{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2014  {c |}{col 21}{res}{space 2} 84.93995{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2015  {c |}{col 21}{res}{space 2}-7.426944{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2016  {c |}{col 21}{res}{space 2}-13.26435{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2017  {c |}{col 21}{res}{space 2} 17.79608{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2018  {c |}{col 21}{res}{space 2}-38.06615{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 4}WISCONSIN#2019  {c |}{col 21}{res}{space 2} 13.40959{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2007  {c |}{col 21}{res}{space 2} 12.86251{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2008  {c |}{col 21}{res}{space 2}-35.16959{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2009  {c |}{col 21}{res}{space 2}-17.98653{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2010  {c |}{col 21}{res}{space 2} 57.65375{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2011  {c |}{col 21}{res}{space 2} 56.76346{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2012  {c |}{col 21}{res}{space 2}-80.79246{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2013  {c |}{col 21}{res}{space 2} 94.64996{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2014  {c |}{col 21}{res}{space 2} 88.48449{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2015  {c |}{col 21}{res}{space 2}-28.64777{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2016  {c |}{col 21}{res}{space 2} -30.5269{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2017  {c |}{col 21}{res}{space 2}-56.07251{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2018  {c |}{col 21}{res}{space 2}-139.7634{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{space 6}WYOMING#2019  {c |}{col 21}{res}{space 2}        0{col 33}{txt}  (omitted)
+{space 19} {c |}
+{space 14}_cons {c |}{col 21}{res}{space 2} 2321.027{col 33}{space 2}        .{col 44}{space 1}       .{col 53}{space 3}    .{col 61}{space 4}        .{col 74}{space 3}        .
+{txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using FinalRegTable, word keep(Edu_Attainment) addtext(State FE, Y, Year FE, Y, State x Year Interaction, Y) cttop(DV)
+{txt}{stata `"shellout using `"FinalRegTable.rtf"'"':FinalRegTable.rtf}
+{browse `"D:\Econ108FinalData"' :dir}{com} : {txt}{stata `"seeout using "FinalRegTable.txt""':seeout}
+
+{com}. 
+. twoway (scatter ViolentCrimeRatePer100k Edu_Attainment, mcolor(gray) msize (small)) (lfit ViolentCrimeRatePer100k Edu_Attainment, lcolor(red)), ///
+>         title("Violent Crime (Per 100k) vs Educational Attainment Rate") ///
+>         xtitle("Educational Attainment Rate") ///
+>         legend(order(1 "Violent Crime (Per 100k)" 2 "Fitted line"))
+{res}{txt}
+{com}. 
+. graph export ViolentCrimeEdu_AttGraph.png, replace
+{txt}(file ViolentCrimeEdu_AttGraph.png written in PNG format)
+
+{com}. 
+. restore
+{txt}
+{com}. 
+. 
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}D:\Econ108FinalData\Econ108Project.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 3 Jun 2022, 11:29:19
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

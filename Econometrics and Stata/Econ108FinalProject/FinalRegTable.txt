@@ -1,0 +1,17 @@
+Educational Attainment Rate on Violent Crime (Per 100k)				
+	(1)	(2)	(3)	(4)
+		DV	DV	DV
+VARIABLES	ViolentCrimeRatePer100k	ViolentCrimeRatePer100k	ViolentCrimeRatePer100k	ViolentCrimeRatePer100k
+				
+Edu_Attainment	-8.059***	-5.876***	-17.98***	-89.85
+	(1.008)	(1.071)	(4.504)	(0)
+Constant	605.2***	597.4***	872.3***	2,321
+	(31.00)	(28.31)	(94.42)	(0)
+				
+Observations	700	700	700	700
+R-squared	0.078	0.899	0.914	1.000
+State FE		Y	Y	Y
+Year FE		N	Y	Y
+State x Year Interaction				Y
+Robust standard errors in parentheses				
+*** p<0.01, ** p<0.05, * p<0.1				
