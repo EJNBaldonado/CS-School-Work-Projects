@@ -1,0 +1,11 @@
+The first query asks for all attributes of sales joining stores with stores that have sales on an item in the catalog. The first run through of the query is without indexing and shows that
+thout an index on any of the attributes that are used in the queries (indexes on sales (price), stores (state) and catalog(itemname), there is not much difference in the runtime comparing
+the queries before and after indexing. The query will still use sequential scanning in the second run through of the queries after indexing. 
+
+The second query asks for all attributes from stores in the state of California that has sales on an item in the catalog. Therefore the relations compared actually use the indexes that were
+created in the index.sql statements. If you look at the first query prior to the indexing, there is a "filter" being done on store.states finding text = 'CA', in comparison to the second
+run through after indexing, this filter is omitted, and instead uses a "Bitmap Heap Scan on stores" and a recheck condition with  a "Bitmap Index Scan" is perforemd on the state index
+created to find the tuples on the page where store.states = 'CA'. Additionally, the nested loop on the query prior to indexing shows a difference process in steps to find the solution in
+comparison to after indexing. Prior to indexing there is an intial join on sales and catalog, then a seq scan on stores to find stores in CA. After indexing, simply joining sales and catalog
+on itemid, and then sales and stores on storeid is possible as stores are known through indexing by which state they are in. Although indexing was used, it can still be seen that the total run
+time increased after indexing form 8.635ms to 25.831ms, which can mean the nested loop checking values in the queries prior to indexing was faster than using indexed values to resolve the query.

@@ -1,0 +1,52 @@
+This is with indexes on supplier_id on supplier; part_number, color, supplier, on_hand on nyc and sfo 
+~
+ebald009@wch133-03 $ ./measure.sh
+Query time without indexes
+Query1: 21.063 ms
+Query2: 103.682 ms
+Query3: 32680.018 ms
+Query4: 23.615 ms
+Query5: 117.465 ms
+Query6: 25.526 ms
+Query time with indexes
+Query1: 1.847 ms
+Query2: 58.276 ms
+Query3: 37760.860 ms
+Query4: 21.301 ms
+Query5: 552.791 ms
+Query6: 19.346 ms
+~
+ebald009@wch133-03 $ ./measure.sh
+Query time without indexes
+Query1: 21.961 ms
+Query2: 104.374 ms
+Query3: 33171.151 ms
+Query4: 23.436 ms
+Query5: 263.289 ms
+Query6: 44.931 ms
+Query time with indexes
+Query1: 1.859 ms
+Query2: 59.518 ms
+Query3: 37821.382 ms
+Query4: 21.355 ms
+Query5: 531.069 ms
+Query6: 19.358 ms
+~
+ebald009@wch133-03 $ ./measure.sh
+Query time without indexes
+Query1: 22.279 ms
+Query2: 105.694 ms
+Query3: 32685.150 ms
+Query4: 23.742 ms
+Query5: 182.213 ms
+Query6: 26.890 ms
+Query time with indexes
+Query1: 1.839 ms
+Query2: 58.318 ms
+Query3: 37793.018 ms
+Query4: 21.252 ms
+Query5: 519.196 ms
+Query6: 74.655 ms
+~
+
+NOTE: Althought I found ways to decrease 4/6 of the queries, I couldn't find a way to get queries 2 and 5 to be quicker, this could be because of how I nested my queries (scanning through indexing just as inefficient as scanning through entire table ?)
