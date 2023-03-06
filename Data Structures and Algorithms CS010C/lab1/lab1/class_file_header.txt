@@ -1,0 +1,18 @@
+/**
+ * Course: CS014 Summer 2021
+ *
+ * First Name: Eugene  
+ * Last Name: Baldonado
+ * Username: ebald009
+ * email address: ebald009@ucr.edu
+ *
+ *
+ * Assignment: lab1
+ * Filename : lab1.zip
+ *
+ * I hereby certify that the contents of this file represent
+ * my own original individual work. Nowhere herein is there 
+ * code from any outside resources such as another individual,
+ * a website, or publishings unless specifically designated as
+ * permissible by the instructor or TA.
+ */ 

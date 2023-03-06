@@ -1,0 +1,36 @@
+diGraph G {
+
+rankdir = "LR"; 
+ 
+// nodes 
+Lodi [color = red, peripheries=2, style = filled, label = "Lodi 0"];
+Nile [color = red, peripheries=2, style = filled, label = "Nile 2"];
+Mondavi [color = red, peripheries=2, style = filled, label = "Mondavi 1"];
+Rivoli [color = red, peripheries=2, style = filled, label = "Rivoli 1"];
+Pyramids [color = red, peripheries=2, style = filled, label = "Pyramids 1"];
+Zurich [color = red, peripheries=2, style = filled, label = "Zurich 2"];
+Marengo [color = red, peripheries=2, style = filled, label = "Marengo 2"];
+Friedland [color = red, peripheries=2, style = filled, label = "Friedland 2"];
+
+ // edges 
+Lodi->Mondavi[color=purple];
+Lodi->Rivoli[color=purple];
+Lodi->Pyramids[color=purple];
+Nile->Rivoli[color=blue];
+Nile->Marengo[color=blue];
+Mondavi->Lodi[color=blue];
+Mondavi->Nile[color=purple];
+Mondavi->Zurich[color=purple];
+Mondavi->Friedland[color=purple];
+Rivoli->Nile[color=purple];
+Pyramids->Mondavi[color=blue];
+Pyramids->Lodi[color=blue];
+Pyramids->Marengo[color=purple];
+Zurich->Nile[color=blue];
+Zurich->Pyramids[color=blue];
+Zurich->Lodi[color=blue];
+Marengo->Rivoli[color=blue];
+Friedland->Mondavi[color=blue];
+Friedland->Nile[color=blue];
+Friedland->Marengo[color=blue];
+}

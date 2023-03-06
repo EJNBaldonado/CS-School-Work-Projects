@@ -1,0 +1,18 @@
+/**
+ * cs014_sum20A
+ * lab4-5
+ * simple_bst.dot
+ * RR
+ */
+
+digraph G {
+
+  // nodes and edges	
+  key12 -> key8;  
+  key12 -> key16; 
+  key8  -> key1; 
+  key8  -> key11; 
+  key16 -> key13;
+  key16 -> key25;
+  
+}
